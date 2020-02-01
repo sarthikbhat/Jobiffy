@@ -49,7 +49,7 @@ class Header extends Component {
                         <div class="menu_btn_box header_btn jb_cover">
                             <ul>
                                 <li>
-                                <NavLink to='/sign-up' >
+                                <NavLink to='/signup' >
                                     <i class="flaticon-man-user"></i> sign up
                                 </NavLink>
                                 </li>
