@@ -5,6 +5,12 @@ from flask import Flask, request
 from flask_restful import Resource, Api
 
 app = Flask(__name__)
+from pandas import read_csv
+import classifier
+
+c=classifier
+
+app = Flask(__name__,static_folder='Resumes',)
 api=Api(app)
 
 conn = sqlite3.connect('users.db')
@@ -46,3 +52,43 @@ class login(Resource):
 api.add_resource(signup, '/signup=<string:email>&&<string:fname>&&<string:password>')
 api.add_resource(login, '/login=<string:email>&&<string:password>')
 app.run(debug=True)
+class search(Resource):
+	def get(self,param,typeOfParam):
+		print(param)
+		if typeOfParam=='0':
+			print('inside 0--------------------->')
+			ranks=c.call.skills_search(job_types[param])
+		else:
+			df= read_csv("template_new.csv")
+			newSet = set()
+			param = "java, python"
+			for col in df.columns:
+				for parameter in param.split(",").strip():
+					if(df[col].any() == parameter):
+						newSet.add(col)
+			ranks=c.call.skills_search(newSet)
+		return ranks
+
+"""
+class recommend(Resource):
+    def get(self,cookie):
+        ranks=c.call.recommend_search()
+        """
+
+api.add_resource(signup, '/signup=<string:email>&&<string:fname>&&<string:password>')
+api.add_resource(login, '/login=<string:email>&&<string:password>')
+api.add_resource(search, '/search=<string:param>&&<string:typeOfParam>')
+#api.add_resource(recommend, '/recommend=<string:param>')
+app.run(debug=False)
+
+# df= read_csv("./template_new.csv")
+# newSet = set()
+# param = "java, python"
+# for col in df.columns:
+#     for parameter in param.split(",").strip():
+#         if(df[col].any() == parameter):
+#             newSet.add(col)
+
+# print(newSet)
+# ranks=c.call.skills_search(newSet)
+# print(ranks)
