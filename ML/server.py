@@ -67,17 +67,25 @@ class search(Resource):
             print('inside 0--------------------->')
             ranks=c.call.skills_search(job_types[param])
         else:
-            ranks=c.call.skills_search(job_types[param])
+            newSet = set()
+            #param = "java, python"
+            df=c.call.keyword_dict
+            for col in df.columns:
+                for parameter in param.split(","):
+                    if(df[col].any() == parameter):
+                        newSet.add(col)
+            ranks=c.call.skills_search(list(newSet))
         return ranks
 
-"""
+
 class recommend(Resource):
     def get(self,cookie):
-        ranks=c.call.recommend_search()
-        """
+        ranks=c.call.recommend_search(cookie)
+        return ranks
+        
 
 api.add_resource(signup, '/signup=<string:email>&&<string:fname>&&<string:password>')
 api.add_resource(login, '/login=<string:email>&&<string:password>')
 api.add_resource(search, '/search=<string:param>&&<string:typeOfParam>')
-#api.add_resource(recommend, '/recommend=<string:param>')
+api.add_resource(recommend, '/recommend=<string:cookie>')
 app.run(debug=False)
