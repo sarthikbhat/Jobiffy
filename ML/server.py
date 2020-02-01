@@ -1,10 +1,11 @@
 #!/usr/bin/python
 
 import sqlite3
-from flask import Flask, request
+from flask import Flask
 from flask_restful import Resource, Api
-
+import hashlib
 import classifier
+from passlib.hash import sha256_crypt
 
 c=classifier
 
@@ -31,35 +32,39 @@ job_types={
 }
 
 class signup(Resource):
-
-	def get(self, email, fname, password):
-		try:
-			conn = sqlite3.connect('users.db')
-			conn.execute(f"INSERT INTO USERS VALUES ( '{fname}', '{email}', '{password}' )")
-			cursor = conn.execute("SELECT * FROM USERS")
-			for row in cursor:
-				print(row)
-			conn.commit()
-			conn.close()
-			return{"status":"200"}
-		except:
-			return{"status":"500"}
-		
+    def get(self, email, fname, password):
+        try:
+            password = sha256_crypt.encrypt(password)
+            conn = sqlite3.connect('users.db')
+            conn.execute(f"INSERT INTO USERS VALUES ( '{fname}', '{email}', '{password}' )")
+            cursor = conn.execute("SELECT * FROM USERS")
+            for row in cursor:
+                print(row)
+            conn.commit()
+            conn.close()
+            return{"status":"200"}
+        except:
+            return{"status":"500"}
+# sanjay - 1234
+# romil- 7890
 class login(Resource):
-	def get(self, email, password):
-		try:
-			conn = sqlite3.connect('users.db')
-			cursor = conn.execute(f"SELECT * FROM USERS WHERE EMAIL='{email}'")
-			for row in cursor:
-				if password == row[2]:
-					res = {"status":"200"}
-				else:
-					res = {"status":"401"}
-			conn.commit()
-			conn.close()
-		except:
-			res = {"status":"500"}
-		return res
+    def get(self, email, password):
+        res = {}
+        pwd=""
+        try:
+            conn = sqlite3.connect('users.db')
+            cursor = conn.execute(f"SELECT * FROM USERS WHERE EMAIL='{email}'")
+            for row in cursor:
+                pwd = row[2]
+            conn.commit()
+            conn.close()
+            if sha256_crypt.verify(password, pwd) :
+                res = {"status":"200"}
+            else:
+                res={"status":"401"}
+        except:
+            res = {"status":"500"}
+        return res
 
 class search(Resource):
     def get(self,param,typeOfParam):
