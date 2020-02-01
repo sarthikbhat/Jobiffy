@@ -14,7 +14,7 @@ class Card extends Component {
                                     <br/> <span>google</span>
                                 </div>
                                 <div class="jp_job_post_right_cont">
-                                    <h4><a href="#">Trainee Web Designer, (Fresher)</a></h4>
+                                    <h4><a href="#"> {this.props.name} </a></h4>
 
                                     <ul>
                                         <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
@@ -31,10 +31,12 @@ class Card extends Component {
                                             </div>
                                         </li>
                                         <li><a href="job_single.html">Part Time</a></li>
-                                        <li> <a href="#" data-toggle="modal" data-target="#myModal01">apply</a></li>
+                                        <li onClick={()=>{
+                                            window.open(`http://localhost:5000/Resumes/${this.props.name}.pdf`)
+                                        }} > <a data-toggle="modal" data-target="#myModal01">apply</a></li>
                                     </ul>
                                 </div>
-                                <div class="modal fade apply_job_popup" id="myModal01" role="dialog">
+                                <div class="modal fade apply_job_popup" id="1" role="dialog">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>

@@ -5,6 +5,7 @@ import Chatbot from '../../components/Chatbot';
 import MultiSelect from "react-multi-select-component";
 import { NavLink, Redirect } from 'react-router-dom';
 import { FaApple, FaAmazon, FaAngular, FaThLarge, FaBlog } from 'react-icons/fa';
+import Axios from 'axios';
 
 class Home extends Component {
     state = {
@@ -67,6 +68,28 @@ class Home extends Component {
     selectedBadgeJTClicked = (l) => {
         this.setState({ selectedJT: l })
     }
+    handleSearch=()=>{
+        Axios.get(`http://localhost:5000/search=${this.generateString(this.state.jobTitle?this.state.selectedJT:this.state.selected)}&&${this.state.jobTitle?0:1}`)
+        .then(res=>{
+            this.setState({data: res.data})
+            this.props.history.push({
+                pathname: '/job-list',
+                sProps: {
+                    data: this.state.data
+                }
+            })
+        },err=>{
+            console.log(err)
+        })
+    }
+    generateString=(a)=>{
+        var arr=''
+        a.forEach(i=>{
+            arr=arr+','+i.value
+        })
+
+        return arr.slice(1)
+    }
     componentDidMount() {
         window.scrollTo(0, 0)
         setTimeout(() => {
@@ -75,8 +98,15 @@ class Home extends Component {
             }
             console.log("running")
         }, 1000)
+        Axios.get(`http://localhost:5000/recommend=${localStorage.getItem('cookie')?localStorage.getItem('cookie'):'{"java": 1}'}`)
+        .then(res=>{
+            console.log(res.data)
+            localStorage.setItem('cookie',JSON.stringify(res.data))
+        }
+        )
     }
     render() {
+        console.log(this.generateString(this.state.selectedJT))
         const selectedOptionsStyles = {
             color: "#3c763d",
             backgroundColor: "#dff0d8"
@@ -319,8 +349,8 @@ class Home extends Component {
                                 </React.Fragment>
                             )}
                         <div style={{ display: 'flex', marginTop: 20 }} >
-                            <div style={{ margin: 'auto' }} data-animation="animated fadeInUp" class="btn_hover slider_btn">
-                                <a href="#">Search</a>
+                            <div onClick={this.handleSearch} style={{ margin: 'auto' }} data-animation="animated fadeInUp" class="btn_hover slider_btn">
+                                <a>Search</a>
                             </div>
                         </div>
                         <div class="row">

@@ -10,14 +10,14 @@ nlp = en_core_web_sm.load()
 from spacy.matcher import PhraseMatcher
 
 #Function to read resumes from the folder one by one
-mypath='E:/Jobiffy/ML/Resumes' #enter your path here where you saved the resumes
+mypath='E:/SAGAR/BE/Hackit/Jobiffy/ML/Resumes' #enter your path here where you saved the resumes
 onlyfiles = [os.path.join(mypath, f) for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath, f))]
 print(onlyfiles)
 
 class Classifier:
     
     def __init__(self):
-        self.keyword_dict = pd.read_csv('E:/Jobiffy/ML/template_new.csv')
+        self.keyword_dict = pd.read_csv('E:/SAGAR/BE/Hackit/Jobiffy/ML/template_new.csv')
         self.final_database=pd.DataFrame()
         i = 0 
         while i < len(onlyfiles):

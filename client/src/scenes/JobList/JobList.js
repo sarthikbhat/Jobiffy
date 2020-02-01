@@ -7,12 +7,20 @@ import JobSkills from './JobSkills';
 import JobSalary from './JobSalary';
 import Footer from '../../components/Footer';
 import { Link } from 'react-router-dom';
+import Axios from 'axios';
 
 class JobList extends Component {
-    state = {  }
+    state = { 
+        data: {
+            ranked: [1],
+            recommendedSkills: [1]
+        }
+     }
     componentDidMount(){
         window.scrollTo(0, 0)
         window.addEventListener('load', this.handleLoad);
+        // console.log(this.props.location.sProps)
+        this.setState({data: this.props.location.sProps.data})
         setTimeout(()=>{
             if(document.getElementById('loader')){
                 document.getElementById('loader').classList.add('loaded')
@@ -23,18 +31,37 @@ class JobList extends Component {
     handleLoad=()=>{
         // window.onload()
     }
+    // componentDidUpdate(prevProps,prevState){
+    //     console.log('OUT')
+    //     if(this.props!==prevProps){
+    //         console.log('IN')
+    //         this.setState({data: this.props.location.sProps})
+    //     }
+    // }
+    handleSearch=(tech)=>{
+        Axios.get(`http://localhost:5000/search=${tech}&&1`)
+        .then(res=>this.setState({data: res.data}))
+    }
     render() {
-        console.log(this.props.location.searchProps)
-        const renderCard=[1,2,3,4].map(i=>{
+        console.log(this.state)
+        console.log(this.props.location.sProps)
+        const renderCard=this.state.data.ranked.map(i=>{
             return(
-                <Card />
+                <Card
+                name={i}
+                />
             )
         })
-        const renderPill=['Python','Java','C#','ReactJS','AI/ML','Python','Java','C#','ReactJS','AI/ML'].map(i=>{
+        const renderPill=this.state.data.recommendedSkills.map(i=>{
             return(
-                <button style={{color: '#fff', background: '#ff3366', margin: 10, padding: 10, borderRadius: 4, border: 'none'}} >{i}</button>
+                <button onClick={(i)=>this.handleSearch(i)} style={{color: '#fff', background: '#ff3366', margin: 10, padding: 10, borderRadius: 4, border: 'none'}} >{i}</button>
             )
         })
+        // const renderPill=['Python','Java','C#','ReactJS','AI/ML','Python','Java','C#','ReactJS','AI/ML'].map(i=>{
+        //     return(
+        //         <button style={{color: '#fff', background: '#ff3366', margin: 10, padding: 10, borderRadius: 4, border: 'none'}} >{i}</button>
+        //     )
+        // })
         return ( 
             <React.Fragment>
                 <Header />
