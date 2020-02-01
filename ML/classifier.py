@@ -142,6 +142,7 @@ class Classifier:
         rank={}
         print(self.pd_csv['Candidate Name'].values)
         print(self.pd_csv.loc[self.pd_csv['Candidate Name'] == 'rohan murphy'])
+        
         for name in self.pd_csv['Candidate Name'].values:
             val=0.0
             x=self.pd_csv.loc[self.pd_csv['Candidate Name'] == name]
@@ -160,4 +161,3 @@ class Classifier:
                 
 
 call=Classifier()
-call.skills_search(['machinelearning','deeplearning'])

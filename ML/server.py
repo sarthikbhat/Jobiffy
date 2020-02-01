@@ -8,7 +8,7 @@ import classifier
 
 c=classifier
 
-app = Flask(__name__)
+app = Flask(__name__,static_folder='Resumes',)
 api=Api(app)
 
 conn = sqlite3.connect('users.db')
@@ -70,7 +70,14 @@ class search(Resource):
             ranks=c.call.skills_search(job_types[param])
         return ranks
 
+"""
+class recommend(Resource):
+    def get(self,cookie):
+        ranks=c.call.recommend_search()
+        """
+
 api.add_resource(signup, '/signup=<string:email>&&<string:fname>&&<string:password>')
 api.add_resource(login, '/login=<string:email>&&<string:password>')
 api.add_resource(search, '/search=<string:param>&&<string:typeOfParam>')
+#api.add_resource(recommend, '/recommend=<string:param>')
 app.run(debug=False)
