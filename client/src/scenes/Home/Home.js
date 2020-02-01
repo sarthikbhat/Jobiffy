@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Chatbot from '../../components/Chatbot';
 
 class Home extends Component {
-    state = {  }
-    render() { 
-        return ( 
+    state = {}
+    render() {
+        return (
             <React.Fragment>
                 <Header />
                 <div class="main_slider_wrapper slider-area jb_cover">
                     <div class="mains_slider_shaper">
-                        <img src="images/slider_bg.png" class="img-responsive" alt="img"/>
+                        <img src="images/slider_bg.png" class="img-responsive" alt="img" />
                     </div>
                     <div class="slider_small2_shape">
-                        <img src="images/shape4.png" class="img-responsive " alt="img"/>
+                        <img src="images/shape4.png" class="img-responsive " alt="img" />
                     </div>
                     <div class="slider_shape_smt bubble-1">
-                        <img src="images/bubble.png" class="img-responsive " alt="img"/>
+                        <img src="images/bubble.png" class="img-responsive " alt="img" />
                     </div>
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
                         <div class="carousel-inner" role="listbox">
@@ -27,7 +28,7 @@ class Home extends Component {
                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                 <div class="content">
                                                     <div class="slider_shape_smt1 bubble-2">
-                                                        <img src="images/bubble.png" class="img-responsive " alt="img"/>
+                                                        <img src="images/bubble.png" class="img-responsive " alt="img" />
                                                     </div>
                                                     <h2 data-animation="animated fadeInUp">We Offer <span> 25,000 </span>Job
             Vacancies Right Now!.</h2>
@@ -57,10 +58,10 @@ class Home extends Component {
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                 <div class="slider_shape_sm3 bubble-3">
-                                                    <img src="images/bubble.png" class="img-responsive " alt="img"/>
+                                                    <img src="images/bubble.png" class="img-responsive " alt="img" />
                                                 </div>
                                                 <div class="slider_side_img jb_cover">
-                                                    <img src="images/slider_img.png" class="img-responsive" alt="img"/>
+                                                    <img src="images/slider_img.png" class="img-responsive" alt="img" />
 
                                                 </div>
                                             </div>
@@ -75,7 +76,7 @@ class Home extends Component {
                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                 <div class="content">
                                                     <div class="slider_shape_smt1 bubble-4">
-                                                        <img src="images/bubble.png" class="img-responsive" alt="img"/>
+                                                        <img src="images/bubble.png" class="img-responsive" alt="img" />
                                                     </div>
                                                     <h2 data-animation="animated fadeInUp">We Offer <span> 25,000 </span>Job
             Vacancies Right Now!.</h2>
@@ -105,10 +106,10 @@ class Home extends Component {
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                 <div class="slider_shape_sm3 bubble-5">
-                                                    <img src="images/bubble.png" class="img-responsive" alt="img"/>
+                                                    <img src="images/bubble.png" class="img-responsive" alt="img" />
                                                 </div>
                                                 <div class="slider_side_img jb_cover">
-                                                    <img src="images/slider_img.png" class="img-responsive" alt="img"/>
+                                                    <img src="images/slider_img.png" class="img-responsive" alt="img" />
 
                                                 </div>
                                             </div>
@@ -123,7 +124,7 @@ class Home extends Component {
                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                 <div class="content">
                                                     <div class="slider_shape_smt1 bubble-6">
-                                                        <img src="images/bubble.png" class="img-responsive" alt="img"/>
+                                                        <img src="images/bubble.png" class="img-responsive" alt="img" />
                                                     </div>
                                                     <h2 data-animation="animated fadeInUp">We Offer <span> 25,000 </span>Job
             Vacancies Right Now!.</h2>
@@ -153,10 +154,10 @@ class Home extends Component {
                                             </div>
                                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                 <div class="slider_shape_sm3 bubble-7">
-                                                    <img src="images/bubble.png" class="img-responsive" alt="img"/>
+                                                    <img src="images/bubble.png" class="img-responsive" alt="img" />
                                                 </div>
                                                 <div class="slider_side_img jb_cover">
-                                                    <img src="images/slider_img.png" class="img-responsive" alt="img"/>
+                                                    <img src="images/slider_img.png" class="img-responsive" alt="img" />
 
                                                 </div>
                                             </div>
@@ -181,12 +182,12 @@ class Home extends Component {
                         </div>
                     </div>
                     <div class="slider_small_shape">
-                        <img src="images/shape4.png" class="img-responsive" alt="img"/>
+                        <img src="images/shape4.png" class="img-responsive" alt="img" />
                     </div>
                 </div>
                 <div class="index3_form_wrapper jb_cover">
                     <div class="slider_small3_shape">
-                        <img src="images/shape4.png" class="img-responsive" alt="img"/>
+                        <img src="images/shape4.png" class="img-responsive" alt="img" />
                     </div>
                     <div class="container">
                         <div class="row">
@@ -230,7 +231,7 @@ class Home extends Component {
                                     </div>
                                     <div class="contect_form3 contct_form_new3">
 
-                                        <input type="text" name="name" placeholder="Keyword"/>
+                                        <input type="text" name="name" placeholder="Keyword" />
                                     </div>
                                     <div class="index3_form_search">
                                         <a href="#"><i class="fas fa-search"></i></a>
@@ -242,7 +243,7 @@ class Home extends Component {
                 </div>
                 <div class="best_jobs_wrapper index3_best_job_wrapper  jb_cover">
                     <div class="line_shape">
-                        <img src="images/line.png" class="img-responsive" alt="img"/>
+                        <img src="images/line.png" class="img-responsive" alt="img" />
                     </div>
                     <div class="container">
                         <div class="row">
@@ -574,7 +575,7 @@ class Home extends Component {
                         </div>
                     </div>
                     <div class="slider_small3_shape">
-                        <img src="images/shape4.png" class="img-responsive" alt="img"/>
+                        <img src="images/shape4.png" class="img-responsive" alt="img" />
                     </div>
                 </div>
                 <div class="counter_wrapper counter_3_wrapper jb_cover">
@@ -583,11 +584,11 @@ class Home extends Component {
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <div class="counter_mockup_design jb_cover">
 
-                                    <img src="images/mockup6.png" class="img-responsive" alt="img"/>
+                                    <img src="images/mockup6.png" class="img-responsive" alt="img" />
                                 </div>
                                 <div class="counter_jbbb jb_cover">
 
-                                    <img src="images/line2.png" class="img-responsive" alt="img"/>
+                                    <img src="images/line2.png" class="img-responsive" alt="img" />
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
@@ -624,11 +625,11 @@ class Home extends Component {
                 </div>
                 <div class="services_wrapper control_wrapper jb_cover">
                     <div class="slider_small_shape44">
-                        <img src="images/shape4.png" class="img-responsive " alt="img"/>
+                        <img src="images/shape4.png" class="img-responsive " alt="img" />
                     </div>
                     <div class="counter_jbbb2 jb_cover">
 
-                        <img src="images/line3.png" class="img-responsive" alt="img"/>
+                        <img src="images/line3.png" class="img-responsive" alt="img" />
                     </div>
 
                     <div class="container">
@@ -644,7 +645,7 @@ class Home extends Component {
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="services_content jb_cover">
-                                    <img src="images/c1.png" alt="img"/>
+                                    <img src="images/c1.png" alt="img" />
                                     <h3><a href="#">job managment </a></h3>
                                     <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
 
@@ -652,7 +653,7 @@ class Home extends Component {
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="services_content jb_cover">
-                                    <img src="images/c2.png" alt="img"/>
+                                    <img src="images/c2.png" alt="img" />
                                     <h3><a href="#">eassy pay money</a></h3>
                                     <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
 
@@ -660,7 +661,7 @@ class Home extends Component {
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="services_content jb_cover">
-                                    <img src="images/c3.png" alt="img"/>
+                                    <img src="images/c3.png" alt="img" />
                                     <h3><a href="#">flexible invoicing</a></h3>
                                     <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
 
@@ -668,14 +669,14 @@ class Home extends Component {
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="services_content jb_cover">
-                                    <img src="images/c4.png" alt="img"/>
+                                    <img src="images/c4.png" alt="img" />
                                     <h3><a href="#">Compliance Reporting</a></h3>
                                     <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="services_content jb_cover">
-                                    <img src="images/c5.png" alt="img"/>
+                                    <img src="images/c5.png" alt="img" />
                                     <h3><a href="#">job schedule</a></h3>
                                     <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
 
@@ -683,7 +684,7 @@ class Home extends Component {
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="services_content jb_cover">
-                                    <img src="images/c6.png" alt="img"/>
+                                    <img src="images/c6.png" alt="img" />
                                     <h3><a href="#">safety checklists</a></h3>
                                     <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
 
@@ -691,7 +692,7 @@ class Home extends Component {
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="services_content jb_cover">
-                                    <img src="images/c7.png" alt="img"/>
+                                    <img src="images/c7.png" alt="img" />
                                     <h3><a href="#">assest managment</a></h3>
                                     <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
 
@@ -699,7 +700,7 @@ class Home extends Component {
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="services_content jb_cover">
-                                    <img src="images/c8.png" alt="img"/>
+                                    <img src="images/c8.png" alt="img" />
                                     <h3><a href="#">job notifications</a></h3>
                                     <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
 
@@ -707,7 +708,7 @@ class Home extends Component {
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="services_content jb_cover">
-                                    <img src="images/c9.png" alt="img"/>
+                                    <img src="images/c9.png" alt="img" />
                                     <h3><a href="#">customer portal</a></h3>
                                     <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
 
@@ -716,20 +717,20 @@ class Home extends Component {
                         </div>
                     </div>
                     <div class="slider_small3_shape">
-                        <img src="images/shape4.png" class="img-responsive" alt="img"/>
+                        <img src="images/shape4.png" class="img-responsive" alt="img" />
                     </div>
 
                 </div>
                 <div class="download_wrapper index3_download jb_cover">
                     <div class="line_shape">
-                        <img src="images/line.png" class="img-responsive" alt="img"/>
+                        <img src="images/line.png" class="img-responsive" alt="img" />
                     </div>
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <div class="download_mockup_design jb_cover">
 
-                                    <img src="images/mockup7.png" class="img-responsive" alt="img"/>
+                                    <img src="images/mockup7.png" class="img-responsive" alt="img" />
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
@@ -737,7 +738,7 @@ class Home extends Component {
                                     <h1>Download</h1>
                                     <h2>Job Portal App Now!</h2>
                                     <p>All it takes is 30 seconds to Download. Your Mobile App for Job
-                                        <br/> Fast, Simple & Delightful.</p>
+                                        <br /> Fast, Simple & Delightful.</p>
                                     <div class="app_btn playstore_2 jb_cover">
                                         <a href="#" class="ss_playstore"><span><i class="flaticon-android-logo"></i></span> Play Store</a>
                                         <a href="#" class="ss_appstore"><span><i class="flaticon-apple"></i></span> App Store</a>
@@ -768,24 +769,24 @@ class Home extends Component {
                                                 <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12">
                                                     <div class="client_wrapper_cntnt jb_cover">
                                                         <div class="client_shap1 bubble-5">
-                                                            <img src="images/bubble.png" class="img-responsive" alt="img"/>
+                                                            <img src="images/bubble.png" class="img-responsive" alt="img" />
                                                         </div>
                                                         <div class="client_shap2 bubble-7">
-                                                            <img src="images/bubble.png" class="img-responsive" alt="img"/>
+                                                            <img src="images/bubble.png" class="img-responsive" alt="img" />
                                                         </div>
-                                                        <img src="images/quote1.png" alt="img"/>
+                                                        <img src="images/quote1.png" alt="img" />
 
                                                         <h1><a href="#">Marita Irene</a> <span>(business)</span></h1>
 
                                                         <p>Packages and web page editors now use Lorem Ipsum as their am efault model text yr,and a search.</p>
                                                         <div class="client_shap3 bubble-6">
-                                                            <img src="images/bubble.png" class="img-responsive" alt="img"/>
+                                                            <img src="images/bubble.png" class="img-responsive" alt="img" />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
                                                     <div class="clinnt_slider_img jb_cover">
-                                                        <img src="images/vv.png" class="img-responsive" alt="img"/>
+                                                        <img src="images/vv.png" class="img-responsive" alt="img" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -796,24 +797,24 @@ class Home extends Component {
                                                 <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12">
                                                     <div class="client_wrapper_cntnt jb_cover">
                                                         <div class="client_shap1 bubble-8">
-                                                            <img src="images/bubble.png" class="img-responsive" alt="img"/>
+                                                            <img src="images/bubble.png" class="img-responsive" alt="img" />
                                                         </div>
                                                         <div class="client_shap2 bubble-9">
-                                                            <img src="images/bubble.png" class="img-responsive" alt="img"/>
+                                                            <img src="images/bubble.png" class="img-responsive" alt="img" />
                                                         </div>
-                                                        <img src="images/quote1.png" alt="img"/>
+                                                        <img src="images/quote1.png" alt="img" />
 
                                                         <h1><a href="#">Marita Irene</a> <span>(business)</span></h1>
 
                                                         <p>Packages and web page editors now use Lorem Ipsum as their am efault model text yr,and a search.</p>
                                                         <div class="client_shap3 bubble-6">
-                                                            <img src="images/bubble.png" class="img-responsive" alt="img"/>
+                                                            <img src="images/bubble.png" class="img-responsive" alt="img" />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
                                                     <div class="clinnt_slider_img jb_cover">
-                                                        <img src="images/vv.png" class="img-responsive" alt="img"/>
+                                                        <img src="images/vv.png" class="img-responsive" alt="img" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -824,124 +825,12 @@ class Home extends Component {
                         </div>
                     </div>
                     <div class="slider_small3_shape shapenew">
-                        <img src="images/shape4.png" className="img-responsive" alt="img"/>
+                        <img src="images/shape4.png" className="img-responsive" alt="img" />
                     </div>
                 </div>
-                <div class="pricing_table_3 jb_cover">
-                    <div class="line_shape">
-                        <img src="images/line.png" className="img-responsive" alt="img"/>
-                    </div>
-
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12">
-                                <div class="jb_heading_wraper">
-
-                                    <h3>choose pricing plan
-            </h3>
-
-                                    <p>Your next level Product developemnt company assets</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12 col-sm-12 col-12">
-                                <div class="pricing_box_wrapper index2_pricing_wrapper index3_pricing_wrapper jb_cover">
-                                    <h1>basic plan</h1>
-                                    <div class="main_pdet jb_cover">
-
-                                        <h2><span class="dollarr"> $ </span> 19 <br/> <span>/ per month</span> </h2>
-
-                                    </div>
-
-                                    <ul class="pricing_list22">
-
-                                        <li>5 Jobs Posting
-                                        </li>
-                                        <li>2 Featured jobs
-                                        </li>
-                                        <li>
-                                            1 Renew Jobs
-
-                                        </li>
-                                        <li>10 Days Duration
-                                        </li>
-                                        <li>Email Alert
-
-                                        </li>
-
-                                    </ul>
-                                    <a href="#" class="price_btn">select plan</a>
-
-                                </div>
-
-                            </div>
-                            <div class="col-lg-4 col-md-12 col-sm-12 col-12">
-                                <div class="pricing_box_wrapper index2_pricing_wrapper index3_pricing_wrapper jb_cover">
-                                    <h1>premium plan</h1>
-                                    <div class="main_pdet jb_cover">
-
-                                        <h2><span class="dollarr"> $ </span> 29 <br/> <span>/ per month</span> </h2>
-
-                                    </div>
-                                    <ul class="pricing_list22">
-                                        <li>5 Jobs Posting
-                                        </li>
-                                        <li>2 Featured jobs
-                                        </li>
-                                        <li>
-                                            1 Renew Jobs
-
-                                        </li>
-                                        <li>10 Days Duration
-                                        </li>
-                                        <li>Email Alert
-
-                                        </li>
-
-                                    </ul>
-                                    <a href="#" class="price_btn">select plan</a>
-                                </div>
-
-                            </div>
-                            <div class="col-lg-4 col-md-12 col-sm-12 col-12">
-                                <div class="pricing_box_wrapper index2_pricing_wrapper index3_pricing_wrapper jb_cover">
-                                    <h1>premium plan</h1>
-                                    <div class="main_pdet jb_cover">
-
-                                        <h2><span class="dollarr"> $ </span> 59 <br/> <span>/ per month</span> </h2>
-
-                                    </div>
-                                    <ul class="pricing_list22">
-                                        <li>5 Jobs Posting
-                                        </li>
-                                        <li>2 Featured jobs
-                                        </li>
-                                        <li>
-                                            1 Renew Jobs
-
-                                        </li>
-                                        <li>10 Days Duration
-                                        </li>
-                                        <li>Email Alert
-
-                                        </li>
-
-                                    </ul>
-                                    <a href="#" class="price_btn">select plan</a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="counter_jbbb2 jb_cover">
-
-                        <img src="images/line3.png" class="img-responsive" alt="img"/>
-                    </div>
-                </div>
+              
                 <div class="popular_wrapper jb_cover">
-                    <div class="slider_small3_shape shapenew">
-                        <img src="images/shape4.png" class="img-responsive " alt="img"/>
-                    </div>
+                  
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12">
@@ -960,7 +849,7 @@ class Home extends Component {
                                             <i class="flaticon-laptop"></i>
                                             <h4>I’m an employer</h4>
                                             <p>Signed in companies are able to post new
-                                                <br/> job offers, searching for candidate...</p>
+                                                <br /> job offers, searching for candidate...</p>
                                             <ul>
                                                 <li><a href="#" class="price_btn regis_btn"> register as company</a></li>
                                             </ul>
@@ -972,7 +861,7 @@ class Home extends Component {
                                             <i class="flaticon-doctor"></i>
                                             <h4>I’m an candidate</h4>
                                             <p>Signed in companies are able to post new
-                                                <br/> job offers, searching for candidate...</p>
+                                                <br /> job offers, searching for candidate...</p>
                                             <ul>
                                                 <li><a href="#" class="price_btn regis_btn">register as candidate</a></li>
                                             </ul>
@@ -989,7 +878,7 @@ class Home extends Component {
                 </div>
                 <div class="pricing_table_3 recent_resume_wrapper jb_cover">
                     <div class="slider_small_shape44">
-                        <img src="images/p2.png" class="img-responsive " alt="img"/>
+                        <img src="images/p2.png" class="img-responsive " alt="img" />
                     </div>
                     <div class="container">
                         <div class="row">
@@ -1073,12 +962,12 @@ class Home extends Component {
                     </div>
                     <div class="counter_jbbb2 jb_cover">
 
-                        <img src="images/line3.png" class="img-responsive" alt="img"/>
+                        <img src="images/line3.png" class="img-responsive" alt="img" />
                     </div>
                 </div>
                 <div class="news_letter_wrapper shaa jb_cover">
                     <div class="sha1 bubble-180">
-                        <img src="images/bubble2.png" class="img-responsive " alt="img"/>
+                        <img src="images/bubble2.png" class="img-responsive " alt="img" />
                     </div>
                     <div class="container">
                         <div class="row">
@@ -1098,31 +987,31 @@ class Home extends Component {
                         </div>
                     </div>
                     <div class="sha2 bubble-185">
-                        <img src="images/bubble2.png" class="img-responsive " alt="img"/>
+                        <img src="images/bubble2.png" class="img-responsive " alt="img" />
                     </div>
                 </div>
                 <div class="footer index2_footer_wrapper footer_index3 shaa jb_cover">
                     <div class="ft_shape bubble-18">
-                        <img src="images/bubble2.png" class="img-responsive " alt="img"/>
+                        <img src="images/bubble2.png" class="img-responsive " alt="img" />
                     </div>
 
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-3 col-sm-6 col-12">
                                 <div class="footerNav jb_cover">
-                                    <a href="#"><img src="images/logo5.png" alt="img"/></a>
+                                    <a href="#"><img src="images/logo5.png" alt="img" /></a>
                                     <ul class="footer_first_contact">
                                         <li><i class="flaticon-location-pointer"></i>
                                             <p>123 City Avenue, Floor 10,
-                                                <br/> malbourne, Australia.
+                                                <br /> malbourne, Australia.
                                             </p>
                                         </li>
                                         <li><i class="flaticon-telephone"></i>
                                             <p>1 -234 -456 -7890
-                                                <br/> 1 -234 -456 -7890</p>
+                                                <br /> 1 -234 -456 -7890</p>
                                         </li>
                                         <li><i class="flaticon-envelope"></i><a href="#">info@Jbdesks.com </a>
-                                            <br/>
+                                            <br />
                                             <a href="#">support@Jbdesks.com</a>
                                         </li>
 
@@ -1132,7 +1021,7 @@ class Home extends Component {
                                         <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                         <li>
                                             <a href="#"><i class="fab fa-twitter"></i>
-                                                </a>
+                                            </a>
                                         </li>
                                         <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                                         <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
@@ -1150,7 +1039,7 @@ class Home extends Component {
                                         <li><a href="#"><i class="fa fa-square"></i>Time & Materials Tracking
             </a></li>
 
-                                        <li><a href="#"><i class="fa fa-square"></i>Standards Compliance 
+                                        <li><a href="#"><i class="fa fa-square"></i>Standards Compliance
             </a></li>
 
                                         <li><a href="#"><i class="fa fa-square"></i>Real Time GPS Tracking
@@ -1186,28 +1075,28 @@ class Home extends Component {
                                     <h5>app & integration</h5>
                                     <ul class="nav-widget">
                                         <li>
-                                            <a href="#"><img src="images/ft1.png" alt="img"/>Xero
+                                            <a href="#"><img src="images/ft1.png" alt="img" />Xero
                                             </a>
                                         </li>
 
                                         <li>
-                                            <a href="#"><img src="images/ft2.png" alt="img"/>Reckon
+                                            <a href="#"><img src="images/ft2.png" alt="img" />Reckon
                                             </a>
                                         </li>
 
                                         <li>
-                                            <a href="#"><img src="images/ft3.png" alt="img"/>Flexidocs
+                                            <a href="#"><img src="images/ft3.png" alt="img" />Flexidocs
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#"><img src="images/ft4.png" alt="img"/>Microsoft Exchange</a>
+                                            <a href="#"><img src="images/ft4.png" alt="img" />Microsoft Exchange</a>
                                         </li>
                                         <li>
-                                            <a href="#"><img src="images/ft5.png" alt="img"/> Mailchimp
+                                            <a href="#"><img src="images/ft5.png" alt="img" /> Mailchimp
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#"><img src="images/ft6.png" alt="img"/> MYOB
+                                            <a href="#"><img src="images/ft6.png" alt="img" /> MYOB
                                             </a>
                                         </li>
 
@@ -1232,16 +1121,17 @@ class Home extends Component {
                         </div>
                     </div>
                     <div class="ft_shape2 bubble-190">
-                        <img src="images/bubble2.png" class="img-responsive " alt="img"/>
+                        <img src="images/bubble2.png" class="img-responsive " alt="img" />
                     </div>
                     <div class="ft_shape1 bubble-19">
-                        <img src="images/bubble2.png" class="img-responsive " alt="img"/>
+                        <img src="images/bubble2.png" class="img-responsive " alt="img" />
                     </div>
                 </div>
+                <Chatbot/>
                 <Footer />
             </React.Fragment>
-         );
+        );
     }
 }
- 
+
 export default Home;

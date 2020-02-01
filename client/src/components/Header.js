@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { FaSearch ,FaTimes } from 'react-icons/fa';
+
 
 class Header extends Component {
     state = {  }
@@ -64,19 +66,8 @@ class Header extends Component {
                         <div class="jb_navigation_wrapper">
                             <div class="mainmenu d-xl-block d-lg-block d-md-none d-sm-none d-none">
                                 <ul class="main_nav_ul">
-                                    <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">home</a>
-                                        <ul class="navi_2_dropdown">
-                                            <li class="parent">
-                                                <a href="index.html"><i class="fas fa-square"></i>home I </a>
-                                            </li>
-                                            <li class="parent">
-                                                <a href="index_II.html"><i class="fas fa-square"></i>home II</a>
-                                            </li>
-                                            <li class="parent">
-                                                <a href="index_III.html"><i class="fas fa-square"></i> home III</a>
-                                            </li>
-
-                                        </ul>
+                                    <li class="has-mega gc_main_navigation">
+                                        <NavLink class="has-mega gc_main_navigation" to ='/'>home</NavLink>
                                     </li>
                                     <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">jobs</a>
                                         <ul class="navi_2_dropdown">
@@ -225,7 +216,7 @@ class Header extends Component {
 
                                         </ul>
                                     </li>
-                                    <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation active_class">pages</a>
+                                    {/* <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation active_class">pages</a>
                                         <ul class="navi_2_dropdown">
                                             <li class="parent">
                                                 <a href="about_us.html"> <i class="fas fa-square"></i>about us</a>
@@ -250,7 +241,7 @@ class Header extends Component {
                                             </li>
 
                                         </ul>
-                                    </li>
+                                    </li> */}
                                     <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">dashboard</a>
                                         <ul class="navi_2_dropdown">
                                             <li class="parent">
@@ -330,13 +321,13 @@ class Header extends Component {
                             <div class="jb_search_btn_wrapper d-none d-sm-none d-md-none d-lg-block d-xl-block">
                                 <div class="extra-nav">
                                     <div class="extra-cell">
-                                        <button id="quik-search-btn" type="button" class="site-button radius-xl"><i class="fas fa-search"></i></button>
+                                        <button id="quik-search-btn" type="button" class="site-button radius-xl"><i><FaSearch/></i></button>
                                     </div>
                                 </div>
                                 <div class="dez-quik-search bg-primary-dark">
                                     <form action="#">
-                                        <input name="search" value="" type="text" class="form-control" placeholder="Type to search..." />
-                                        <span id="quik-search-remove"><i class="fas fa-times"></i></span>
+                                        <input name="search" type="text" class="form-control" placeholder="Type to search..." />
+                                        <span id="quik-search-remove"><i><FaTimes/></i></span>
                                     </form>
                                 </div>
                             </div>
