@@ -2,10 +2,39 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { FaPinterest, FaUser, FaFacebook, FaEnvelope, FaLock } from 'react-icons/fa';
+import Axios from 'axios';
 
 
 class Login extends Component {
-    state = {  }
+    state = { 
+        email: '',
+        password: ''
+     }
+    //  romilshah525
+    //  mumbai
+    handleLogin=()=>{
+         console.log('in')
+         Axios.get(`http://localhost:5000/login=${this.state.email}&&${this.state.password}`)
+         .then(res=>{
+             if(res.data.status==200){
+                 this.props.history.push({
+                     pathname: '/search'
+                 })
+             }
+             else if(res.data.status==401){
+                 alert('Incorrect password')
+             }
+         },err=>{
+             alert('Username or password is inorrect')
+         })
+     }
+    handleEmail=(event)=>{
+        this.setState({email: event.target.value})
+    }
+    handlePassword=(event)=>{
+        console.log(event.target.password)
+        this.setState({password: event.target.value})
+    }
     render() { 
         return ( 
             <React.Fragment>
@@ -56,12 +85,12 @@ class Login extends Component {
                                         <h2>login</h2>
                                         <div class="form-group icon_form comments_form">
 
-                                            <input type="text" class="form-control require" name="full_name" placeholder="Email Address*" />
+                                            <input value={this.state.email} onChange={this.handleEmail} type="text" class="form-control require" name="full_name" placeholder="Email Address*" />
                                             <i><FaEnvelope/></i>
                                         </div>
                                         <div class="form-group icon_form comments_form">
 
-                                            <input type="password" class="form-control require" placeholder="Password *" />
+                                            <input onChange={this.handlePassword} value={this.state.password} type="password" class="form-control require" placeholder="Password *" />
                                             <i><FaLock/></i>
                                         </div>
                                         <div class="login_remember_box">
@@ -73,12 +102,11 @@ class Login extends Component {
                                                 Forgot Password
                                             </a>
                                         </div>
-                                        <div class="header_btn search_btn login_btn jb_cover">
-
+                                        <div onClick={this.handleLogin} class="header_btn search_btn login_btn jb_cover">
                                             <a href="#">login</a>
                                         </div>
                                         <div class="dont_have_account jb_cover">
-                                            <p>Don’t have an acount ? <a href="sign_up.html">Sign up</a></p>
+                                            <p>Don’t have an acount ? <a href="/signup">Sign up</a></p>
                                         </div>
                                     </div>
                                 </div>

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { FaCommentAlt , FaTimes , FaPaperPlane} from 'react-icons/fa';
+import Speech from 'react-speech';
 
 class Chatbot extends Component {
     state = {}
     render() {
         return (
             <React.Fragment>
+                <Speech text="Welcome to react speech" />
                 <div id="chat-circle" class="btn btn-raised circle_index3">
                     <i><FaCommentAlt/></i>
                 </div>

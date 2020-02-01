@@ -2,14 +2,34 @@ import React, { Component } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Chatbot from '../../components/Chatbot';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 class Home extends Component {
-    state = {}
+    state = {
+        category: 'Category'
+    }
+    change=(event)=>{
+        console.log('event.target.value')
+    }
+    componentDidMount(){
+        window.scrollTo(0, 0)
+        setTimeout(()=>{
+            if(document.getElementById('loader')){
+                document.getElementById('loader').classList.add('loaded')
+            }
+            console.log("running")
+        },1000)
+    }
     render() {
         return (
             <React.Fragment>
                 <Header />
+                <div id='loader' class="jb_preloader">
+                    <div class="spinner_wrap">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+                {/* <div class="cursor cursor2 cursor3"></div> */}
                 <div class="main_slider_wrapper slider-area jb_cover">
                     <div class="mains_slider_shaper">
                         <img src="images/slider_bg.png" class="img-responsive" alt="img" />
@@ -194,9 +214,9 @@ class Home extends Component {
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="index3_form_box jb_cover">
-                                    <div class="select_box select_box3">
+                                    {/* <div class="select_box select_box3">
 
-                                        <select>
+                                        <select id='cat' onChange={()=>{console.log("HW")}} value={this.state.category}  >
                                             <option>category</option>
                                             <option>real estate</option>
                                             <option>electronics</option>
@@ -205,10 +225,19 @@ class Home extends Component {
 
                                         </select>
 
+                                    </div> */}
+                                    <div class="select_box select_box3">
+
+                                    <select id='loc' >
+                                        <option>Type</option>
+                                        <option>Job Title</option>
+                                        <option>Skill Set</option>
+                                    </select>
+
                                     </div>
                                     <div class="select_box select_box3">
 
-                                        <select>
+                                        <select id='jobtitle' onClick={this.change} value={this.state.category} >
                                             <option>job title</option>
                                             <option>teacher</option>
                                             <option>marketing</option>
@@ -218,26 +247,38 @@ class Home extends Component {
                                         </select>
 
                                     </div>
-                                    <div class="select_box select_box3">
-
-                                        <select>
-                                            <option>location</option>
-                                            <option>pune</option>
-                                            <option>banglore</option>
-                                            <option>indore</option>
-                                            <option>bhopal</option>
-
-                                        </select>
-
-                                    </div>
                                     <div class="contect_form3 contct_form_new3">
-
-                                        <input type="text" name="name" placeholder="Keyword" />
+                                        <input id='keyword' type="text" name="name" placeholder="Skill Set" />
                                     </div>
-                                    <div class="index3_form_search">
-                                        <NavLink to='job-list'>
+                                    <div style={{width: '31%'}} class="index3_form_search" onClick={(e)=>{
+                                            this.setState({
+                                                // category: document.getElementById('cat').value,
+                                                jobtitle: document.getElementById('jobtitle').value,
+                                                loc: document.getElementById('loc').value,
+                                                keyword: document.getElementById('keyword').value
+                                            })
+                                            console.log("dfdf")
+                                            this.props.history.push({
+                                                pathname: '/job-list',
+                                                searchProps: {
+                                                    // category: document.getElementById('cat').value,
+                                                    jobtitle: document.getElementById('jobtitle').value,
+                                                    loc: document.getElementById('loc').value,
+                                                    keyword: document.getElementById('keyword').value
+                                                }
+                                              })
+                                        }}>
+                                        {/* <NavLink to={{
+                                            pathname: 'job-list',
+                                            searchProps:{
+                                                category: document.getElementById('cat').value,
+                                                jobtitle: document.getElementById('jobtitle').value,
+                                                loc: document.getElementById('loc').value,
+                                                keyword: document.getElementById('keyword').value
+                                            }
+                                        }}> */}
                                             <i class="fas fa-search"></i>
-                                        </NavLink>
+                                        {/* </NavLink> */}
                                     </div>
                                 </div>
                             </div>

@@ -11,8 +11,19 @@ class JobList extends Component {
     state = {  }
     componentDidMount(){
         window.scrollTo(0, 0)
+        window.addEventListener('load', this.handleLoad);
+        setTimeout(()=>{
+            if(document.getElementById('loader')){
+                document.getElementById('loader').classList.add('loaded')
+            }
+            console.log("running")
+        },1000)
+    }
+    handleLoad=()=>{
+        // window.onload()
     }
     render() {
+        console.log(this.props.location.searchProps)
         const renderCard=[1,2,3,4].map(i=>{
             return(
                 <Card />
@@ -21,6 +32,12 @@ class JobList extends Component {
         return ( 
             <React.Fragment>
                 <Header />
+                <div id='loader' class="jb_preloader">
+                    <div class="spinner_wrap">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+                {/* <div class="cursor cursor2 cursor3"></div> */}
                 <div class="page_title_section">
 
                     <div class="page_header">
@@ -47,164 +64,17 @@ class JobList extends Component {
 
                         <div class="row">
                             <div class="col-lg-3 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none d-lg-block d-xl-block">
-                                <div class="job_filter_category_sidebar jb_cover">
-                                    <div class="job_filter_sidebar_heading jb_cover">
-                                        <h1>jobs by  category</h1>
-                                    </div>
-
-                                    <div class="category_jobbox jb_cover">
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c1" name="cb"/>
-                                            <label for="c1">graphic designer<span> (155)</span></label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c2" name="cb"/>
-                                            <label for="c2">
-                                                Engineering Jobs <span> (514)</span>
-                                            </label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c3" name="cb"/>
-                                            <label for="c3">Mainframe Jobs <span> (554)</span>
-                                            </label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c4" name="cb"/>
-                                            <label for="c4">Legal Jobs <span> (457)</span>
-                                            </label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c5" name="cb"/>
-                                            <label for="c5">IT Jobs <span> (254)</span> </label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c6" name="cb"/>
-                                            <label for="c6">PSU Jobs <span> (1054)</span> </label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c7" name="cb"/>
-                                            <label for="c7">government Jobs <span> (1284)</span> </label>
-                                        </p>
-                                        <div class="seeMore"><a href="#">view all categories</a></div>
-                                    </div>
-
-                                </div>
-                                <div class="job_filter_category_sidebar jb_cover">
-                                    <div class="job_filter_sidebar_heading jb_cover">
-                                        <h1>jobs by  location</h1>
-                                    </div>
-
-                                    <div class="category_jobbox jb_cover">
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c01" name="cb"/>
-                                            <label for="c01">Jobs in delhi
-                                                <span> (24)</span></label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c02" name="cb"/>
-                                            <label for="c02">
-                                                Jobs in mumbai
-                                                <span> (1242)</span>
-                                            </label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c03" name="cb"/>
-                                            <label for="c03">Jobs in chennai
-                                                <span>(458)</span>
-                                            </label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c04" name="cb"/>
-                                            <label for="c04">Jobs in indore
-                                                <span> (1047)</span>
-                                            </label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c05" name="cb"/>
-                                            <label for="c05">Job in bhopal <span> (124)</span> </label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c06" name="cb"/>
-                                            <label for="c06">Job in pune <span> (124)</span> </label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c07" name="cb"/>
-                                            <label for="c07">Job in banglore <span> (124)</span> </label>
-                                        </p>
-                                        <div class="seeMore"><a href="#">view all categories</a></div>
-                                    </div>
-                                </div>
-                                <div class="job_filter_category_sidebar jb_cover">
-                                    <div class="job_filter_sidebar_heading jb_cover">
-                                        <h1>your skill's</h1>
-                                    </div>
-
-                                    <div class="category_jobbox jb_cover">
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c11" name="cb"/>
-                                            <label for="c11">javascript
-                                                <span> (124)</span></label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c12" name="cb"/>
-                                            <label for="c12">
-                                                HTML5
-                                                <span> (42)</span>
-                                            </label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c13" name="cb"/>
-                                            <label for="c13">CSS
-                                                <span>(158)</span>
-                                            </label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c14" name="cb"/>
-                                            <label for="c14">marketing
-                                                <span> (47)</span>
-                                            </label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c15" name="cb"/>
-                                            <label for="c15">web design <span> (124)</span> </label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c16" name="cb"/>
-                                            <label for="c16">PHP<span> (124)</span> </label>
-                                        </p>
-                                        <p class="job_field">
-                                            <input type="checkbox" id="c17" name="cb"/>
-                                            <label for="c17">social media<span> (124)</span> </label>
-                                        </p>
-
-                                        <div class="seeMore"><a href="#">view all categories</a></div>
-                                    </div>
-                                </div>
-                                <div class="job_filter_category_sidebar jb_cover">
-                                    <div class="job_filter_sidebar_heading jb_cover">
-                                        <h1>salary</h1>
-                                    </div>
-
-                                    <div class="category_jobbox jb_cover">
-                                        <div class="widget price-range">
-                                            <ul>
-                                                <li class="range">
-                                                    <div id="range-price" class="range-box"></div>
-
-                                                    <input type="text" id="price" class="price-box" readonly/>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                <JobCategory />
+                                <JobLocation />
+                                <JobSkills />
+                                <JobSalary />
                             </div>
                             <div class="col-lg-9 col-md-12 col-sm-12 col-12">
                                 <div class="job_listing_left_side jb_cover">
                                     <div class="filter-area jb_cover">
 
                                         <select>
-                                            <option>short by</option>
+                                            <option>sort by</option>
                                             <option>most recent </option>
                                             <option>most popular</option>
                                             <option>top rated</option>
@@ -415,10 +285,6 @@ class JobList extends Component {
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-12 col-sm-12 col-12 d-block d-sm-block d-md-block d-lg-none d-xl-none">
-                                <JobCategory />
-                                <JobLocation />
-                                <JobSkills />
-                                <JobSalary />
                             </div>
                         </div>
                     </div>

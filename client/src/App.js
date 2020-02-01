@@ -14,8 +14,8 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/' exact component={Home} />
-        <Route path='/login' component={Login} />
+        <Route path='/' exact component={Login} />
+        <Route path='/search' component={Home} />
         <Route path='/job-list' component={JobList} />
         <Route path='/signup' component={Signup} />
         <Route path='/error' component={ErrorPage} />
