@@ -9,6 +9,9 @@ import Footer from '../../components/Footer';
 
 class JobList extends Component {
     state = {  }
+    componentDidMount(){
+        window.scrollTo(0, 0)
+    }
     render() {
         const renderCard=[1,2,3,4].map(i=>{
             return(

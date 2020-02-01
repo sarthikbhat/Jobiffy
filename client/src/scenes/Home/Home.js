@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import { NavLink } from 'react-router-dom';
 
 class Home extends Component {
     state = {  }
@@ -233,7 +234,9 @@ class Home extends Component {
                                         <input type="text" name="name" placeholder="Keyword"/>
                                     </div>
                                     <div class="index3_form_search">
-                                        <a href="#"><i class="fas fa-search"></i></a>
+                                        <NavLink to='job-list'>
+                                            <i class="fas fa-search"></i>
+                                        </NavLink>
                                     </div>
                                 </div>
                             </div>
