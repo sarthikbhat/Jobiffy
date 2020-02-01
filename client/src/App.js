@@ -3,11 +3,16 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import { Router, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom'
 import Login from './scenes/Login';
+import Home from './scenes/Home/Home';
 
 function App() {
   return (
-    <Route path='/' exact component={Login} />
+    <BrowserRouter>
+      <Route path='/' exact component={Home} />
+      <Route path='/login' component={Login} />
+    </BrowserRouter>
   );
 }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
     state = {  }
@@ -48,10 +49,14 @@ class Header extends Component {
                         <div class="menu_btn_box header_btn jb_cover">
                             <ul>
                                 <li>
-                                    <a href="sign_up.html"><i class="flaticon-man-user"></i> sign up</a>
+                                <NavLink to='/sign-up' >
+                                    <i class="flaticon-man-user"></i> sign up
+                                </NavLink>
                                 </li>
                                 <li>
-                                    <a href="login.html"> <i class="flaticon-login"></i> login</a>
+                                    <NavLink to='/login' >
+                                    <i class="flaticon-login"></i> login
+                                    </NavLink>
                                 </li>
                             </ul>
                         </div>
