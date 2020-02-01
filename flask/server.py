@@ -45,4 +45,4 @@ class login(Resource):
 
 api.add_resource(signup, '/signup=<string:email>&&<string:fname>&&<string:password>')
 api.add_resource(login, '/login=<string:email>&&<string:password>')
-app.run(host='10.0.129.135',debug=True)
+app.run(debug=True)
