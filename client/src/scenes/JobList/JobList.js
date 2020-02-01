@@ -30,6 +30,11 @@ class JobList extends Component {
                 <Card />
             )
         })
+        const renderPill=['Python','Java','C#','ReactJS','AI/ML','Python','Java','C#','ReactJS','AI/ML'].map(i=>{
+            return(
+                <button style={{color: '#fff', background: '#ff3366', margin: 10, padding: 10, borderRadius: 4, border: 'none'}} >{i}</button>
+            )
+        })
         return ( 
             <React.Fragment>
                 <Header />
@@ -93,6 +98,12 @@ class JobList extends Component {
                                         </div>
                                         <div class="showpro">
                                             <p>You're Watching 01 to 20</p>
+                                        </div>
+                                    </div>
+                                    <div style={{display: 'flex', alignItems: 'center', gridTemplateColumns: '1fr 6fr', border: '1px solid #e2e2e2', marginTop: 120, padding: 30}} >
+                                        <div>Recomemded</div>
+                                        <div style={{display: 'flex', overflowX: 'scroll'}} >
+                                            {renderPill}
                                         </div>
                                     </div>
                                     <div class="tab-content btc_shop_index_content_tabs_main jb_cover">
