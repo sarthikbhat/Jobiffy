@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { FaPinterest, FaUser, FaFacebook, FaEnvelope, FaLock } from 'react-icons/fa';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Signup extends Component {
     state = { 
@@ -52,7 +53,7 @@ class Signup extends Component {
                                 <div class="col-lg-3 col-md-4 col-12 col-sm-5">
                                     <div class="sub_title_section">
                                         <ul class="sub_title">
-                                            <li> <a href="#"> Home </a>&nbsp; / &nbsp; </li>
+                                        <li> <Link to="/search"> Home </Link>&nbsp; / &nbsp; </li>
                                             <li>sign up</li>
                                         </ul>
                                     </div>

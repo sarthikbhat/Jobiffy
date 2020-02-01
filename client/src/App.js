@@ -9,6 +9,7 @@ import Signup from './scenes/Signup';
 import Home from './scenes/Home/Home';
 import JobList from './scenes/JobList/JobList';
 import ErrorPage from './scenes/Error/Error';
+import Contact from './scenes/Contact';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/search' component={Home} />
         <Route path='/job-list' component={JobList} />
         <Route path='/signup' component={Signup} />
+        <Route path='/contactus' component={Contact} />
         <Route path='/error' component={ErrorPage} />
       </Switch>
     </BrowserRouter>

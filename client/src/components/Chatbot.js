@@ -7,7 +7,7 @@ class Chatbot extends Component {
     render() {
         return (
             <React.Fragment>
-                <Speech text="Welcome to react speech" />
+                {/* <Speech text="Welcome to react speech" /> */}
                 <div id="chat-circle" class="btn btn-raised circle_index3">
                     <i><FaCommentAlt/></i>
                 </div>

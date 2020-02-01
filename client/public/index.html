@@ -26,6 +26,9 @@
     <!--favicon-->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="jquery.sumoselect.js"></script>
+    <link href="sumoselect.css" rel="stylesheet" />
 
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -41,6 +44,35 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3, selectAll:true, captionFormatAllSelected: "Yeah, OK, so everything." });
+            window.test = $('.testsel').SumoSelect({okCancelInMulti:true, captionFormatAllSelected: "Yeah, OK, so everything." });
+
+            window.testSelAll = $('.testSelAll').SumoSelect({okCancelInMulti:true, selectAll:true });
+
+            window.testSelAll2 = $('.testSelAll2').SumoSelect({selectAll:true});
+
+            window.testSelAlld = $('.SlectBox-grp').SumoSelect({okCancelInMulti:true, selectAll:true, isClickAwayOk:true });
+
+            window.Search = $('.search-box').SumoSelect({ csvDispCount: 3, search: true, searchText:'Enter here.' });
+            window.sb = $('.SlectBox-grp-src').SumoSelect({ csvDispCount: 3, search: true, searchText:'Enter here.', selectAll:true });
+            window.searchSelAll = $('.search-box-sel-all').SumoSelect({ csvDispCount: 3, selectAll:true, search: true, searchText:'Enter here.', okCancelInMulti:true });
+            window.searchSelAll = $('.search-box-open-up').SumoSelect({ csvDispCount: 3, selectAll:true, search: false, searchText:'Enter here.', up:true });
+            window.Search = $('.search-box-custom-fn').SumoSelect({ csvDispCount: 3, search: true, searchText:'Enter here.', searchFn: function(haystack, needle) {
+              var re = RegExp('^' + needle.replace(/([^\w\d])/gi, '\\$1'), 'i');
+              return !haystack.match(re);
+            } });
+
+            window.groups_eg_g = $('.groups_eg_g').SumoSelect({selectAll:true, search:true });
+
+
+            $('.SlectBox').on('sumo:opened', function(o) {
+              console.log("dropdown opened", o)
+            });
+
+        });
+    </script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.

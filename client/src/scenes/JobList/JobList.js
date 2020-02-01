@@ -6,6 +6,7 @@ import JobLocation from './JobLocation';
 import JobSkills from './JobSkills';
 import JobSalary from './JobSalary';
 import Footer from '../../components/Footer';
+import { Link } from 'react-router-dom';
 
 class JobList extends Component {
     state = {  }
@@ -50,7 +51,7 @@ class JobList extends Component {
                                 <div class="col-lg-3 col-md-3 col-12 col-sm-4">
                                     <div class="sub_title_section">
                                         <ul class="sub_title">
-                                            <li> <a href="#"> Home </a>&nbsp; / &nbsp; </li>
+                                        <li> <Link to="/search"> Home </Link>&nbsp; / &nbsp; </li>
                                             <li>job listing</li>
                                         </ul>
                                     </div>

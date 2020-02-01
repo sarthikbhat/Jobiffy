@@ -160,4 +160,4 @@ class Classifier:
                 
 
 call=Classifier()
-call.skills_search(['machinelearning','deeplearning'])
+# call.skills_search(['machinelearning','deeplearning'])

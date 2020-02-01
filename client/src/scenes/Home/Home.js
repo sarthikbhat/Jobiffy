@@ -2,25 +2,89 @@ import React, { Component } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Chatbot from '../../components/Chatbot';
+import MultiSelect from "react-multi-select-component";
 import { NavLink, Redirect } from 'react-router-dom';
+import { FaApple, FaAmazon, FaAngular, FaThLarge, FaBlog } from 'react-icons/fa';
 
 class Home extends Component {
     state = {
-        category: 'Category'
+        category: 'Category',
+        jobTitle: true,
+        jobTitles: [
+            { label: "Database Manager", value: "Database Manager" },
+            { label: "Graphic Designer", value: "Graphic Designer" },
+            { label: "Mobile App Developer", value: "Mobile App Developer" },
+            { label: "Software Developer", value: "Software Developer" },
+            { label: "Web Developer", value: "Web Developer" },
+            { label: "Data Engineer", value: "Data Engineer" },
+            { label: "ML Developer", value: "ML Developer" },
+            { label: "Blockchain Developer", value: "Blockchain Developer" },
+            { label: "Data Scientist", value: "Data Scientist" },
+            { label: "AR Developer", value: "AR Developer" },
+            { label: "Game Developer", value: "Game Developer" }
+        ],
+        options: [
+            { label: "machinelearning", value: "machinelearning" },
+            { label: "deeplearning", value: "deeplearning" },
+            { label: "neural network", value: "neural network" },
+            { label: "tensorflow", value: "tensorflow" },
+            { label: "opencv", value: "opencv" },
+            { label: "object oriented", value: "object oriented" },
+            { label: "docker", value: "docker" },
+            { label: "scala", value: "scala" },
+            { label: "hadoop", value: "hadoop" },
+            { label: "sql", value: "sql" },
+            { label: "java", value: "java" },
+            { label: "jsp", value: "jsp" },
+            { label: "servlet", value: "servlet" },
+            { label: "c sharp", value: "c sharp" },
+            { label: "unity", value: "unity" },
+            { label: "blockchain", value: "blockchain" },
+            { label: "angular", value: "angular" },
+            { label: "django", value: "django" },
+            { label: "mongodb", value: "mongodb" },
+            { label: "mysql", value: "mysql" },
+            { label: "flutter", value: "flutter" },
+            { label: "kotlin", value: "kotlin" },
+            { label: "photoshop", value: "photoshop" },
+            { label: "illustrator", value: "illustrator" },
+            { label: "coreldraw", value: "coreldraw" },
+            { label: "figma", value: "figma" },
+            { label: "css", value: "css" }
+        ],
+        selected: [],
+        selectedJT: []
     }
-    change=(event)=>{
+    change = (event) => {
         console.log('event.target.value')
     }
-    componentDidMount(){
+    optionClicked = (l) => {
+        this.setState({ list: l })
+    }
+    selectedBadgeClicked = (l) => {
+        this.setState({ selected: l })
+    }
+    selectedBadgeJTClicked = (l) => {
+        this.setState({ selectedJT: l })
+    }
+    componentDidMount() {
         window.scrollTo(0, 0)
-        setTimeout(()=>{
-            if(document.getElementById('loader')){
+        setTimeout(() => {
+            if (document.getElementById('loader')) {
                 document.getElementById('loader').classList.add('loaded')
             }
             console.log("running")
-        },1000)
+        }, 1000)
     }
     render() {
+        const selectedOptionsStyles = {
+            color: "#3c763d",
+            backgroundColor: "#dff0d8"
+        };
+        const optionsListStyles = {
+            backgroundColor: "#dff0d8",
+            color: "#3c763d"
+        };
         return (
             <React.Fragment>
                 <Header />
@@ -61,15 +125,15 @@ class Home extends Component {
                                                     <div data-animation="animated fadeInUp" class="slider_icon_list">
                                                         <ul>
 
-                                                            <li><a href="#"><i class="fab fa-apple"></i></a>
+                                                            <li><a href="#"><i><FaApple /></i></a>
                                                             </li>
-                                                            <li><a href="#"><i class="fab fa-amazon"></i></a>
+                                                            <li><a href="#"><i><FaAmazon /></i></a>
                                                             </li>
-                                                            <li><a href="#"><i class="fab fa-angular"></i></a>
+                                                            <li><a href="#"><i><FaAngular /></i></a>
                                                             </li>
-                                                            <li><a href="#"><i class="fas fa-th-large"></i></a>
+                                                            <li><a href="#"><i><FaThLarge /></i></a>
                                                             </li>
-                                                            <li><a href="#"><i class="fas fa-blog"></i></a>
+                                                            <li><a href="#"><i><FaBlog /></i></a>
                                                             </li>
 
                                                         </ul>
@@ -109,15 +173,15 @@ class Home extends Component {
                                                     <div data-animation="animated fadeInUp" class="slider_icon_list">
                                                         <ul>
 
-                                                            <li><a href="#"><i class="fab fa-apple"></i></a>
+                                                            <li><a href="#"><i><FaApple /></i></a>
                                                             </li>
-                                                            <li><a href="#"><i class="fab fa-amazon"></i></a>
+                                                            <li><a href="#"><i><FaAmazon /></i></a>
                                                             </li>
-                                                            <li><a href="#"><i class="fab fa-angular"></i></a>
+                                                            <li><a href="#"><i><FaAngular /></i></a>
                                                             </li>
-                                                            <li><a href="#"><i class="fas fa-th-large"></i></a>
+                                                            <li><a href="#"><i><FaThLarge /></i></a>
                                                             </li>
-                                                            <li><a href="#"><i class="fas fa-blog"></i></a>
+                                                            <li><a href="#"><i><FaBlog /></i></a>
                                                             </li>
 
                                                         </ul>
@@ -157,15 +221,15 @@ class Home extends Component {
                                                     <div data-animation="animated fadeInUp" class="slider_icon_list">
                                                         <ul>
 
-                                                            <li><a href="#"><i class="fab fa-apple"></i></a>
+                                                            <li><a href="#"><i><FaApple /></i></a>
                                                             </li>
-                                                            <li><a href="#"><i class="fab fa-amazon"></i></a>
+                                                            <li><a href="#"><i><FaAmazon /></i></a>
                                                             </li>
-                                                            <li><a href="#"><i class="fab fa-angular"></i></a>
+                                                            <li><a href="#"><i><FaAngular /></i></a>
                                                             </li>
-                                                            <li><a href="#"><i class="fas fa-th-large"></i></a>
+                                                            <li><a href="#"><i><FaThLarge /></i></a>
                                                             </li>
-                                                            <li><a href="#"><i class="fas fa-blog"></i></a>
+                                                            <li><a href="#"><i><FaBlog /></i></a>
                                                             </li>
 
                                                         </ul>
@@ -210,78 +274,56 @@ class Home extends Component {
                     <div class="slider_small3_shape">
                         <img src="images/shape4.png" class="img-responsive" alt="img" />
                     </div>
+
                     <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="index3_form_box jb_cover">
-                                    {/* <div class="select_box select_box3">
+                        <div class="latest_job_tabs index2_tab_wrapper index3_tab_wrapper jb_cover">
+                            <ul class="nav nav-tabs">
+                                <li onClick={() => this.setState({ jobTitle: true })} class="nav-item"> <a class="nav-link active" data-toggle="tab">Job Title</a>
+                                </li>
+                                <li onClick={() => this.setState({ jobTitle: false })} class="nav-item"> <a class="nav-link " data-toggle="tab" >Skill Set</a>
+                                </li>
 
-                                        <select id='cat' onChange={()=>{console.log("HW")}} value={this.state.category}  >
-                                            <option>category</option>
-                                            <option>real estate</option>
-                                            <option>electronics</option>
-                                            <option>marketing</option>
-                                            <option>education</option>
-
-                                        </select>
-
-                                    </div> */}
-                                    <div class="select_box select_box3">
-
-                                    <select id='loc' >
-                                        <option>Type</option>
-                                        <option>Job Title</option>
-                                        <option>Skill Set</option>
-                                    </select>
-
-                                    </div>
-                                    <div class="select_box select_box3">
-
-                                        <select id='jobtitle' onClick={this.change} value={this.state.category} >
-                                            <option>job title</option>
-                                            <option>teacher</option>
-                                            <option>marketing</option>
-                                            <option>doctor</option>
-                                            <option>graphic</option>
-
-                                        </select>
-
-                                    </div>
-                                    <div class="contect_form3 contct_form_new3">
-                                        <input id='keyword' type="text" name="name" placeholder="Skill Set" />
-                                    </div>
-                                    <div style={{width: '31%'}} class="index3_form_search" onClick={(e)=>{
-                                            this.setState({
-                                                // category: document.getElementById('cat').value,
-                                                jobtitle: document.getElementById('jobtitle').value,
-                                                loc: document.getElementById('loc').value,
-                                                keyword: document.getElementById('keyword').value
-                                            })
-                                            console.log("dfdf")
-                                            this.props.history.push({
-                                                pathname: '/job-list',
-                                                searchProps: {
-                                                    // category: document.getElementById('cat').value,
-                                                    jobtitle: document.getElementById('jobtitle').value,
-                                                    loc: document.getElementById('loc').value,
-                                                    keyword: document.getElementById('keyword').value
-                                                }
-                                              })
-                                        }}>
-                                        {/* <NavLink to={{
-                                            pathname: 'job-list',
-                                            searchProps:{
-                                                category: document.getElementById('cat').value,
-                                                jobtitle: document.getElementById('jobtitle').value,
-                                                loc: document.getElementById('loc').value,
-                                                keyword: document.getElementById('keyword').value
+                            </ul>
+                        </div>
+                        {this.state.jobTitle ? (
+                            <React.Fragment>
+                                <div style={{ fontSize: 24, padding: 16, letterSpacing: 2 }} >Job Title</div>
+                                <MultiSelect
+                                    theme={
+                                        {
+                                            "hover": "#f1f3f5",
+                                            "height": "58px"
+                                        }
+                                    }
+                                    options={this.state.jobTitles}
+                                    value={this.state.selectedJT}
+                                    onChange={this.selectedBadgeJTClicked}
+                                    labelledBy={"Select"}
+                                />
+                            </React.Fragment>
+                        ) : (
+                                <React.Fragment>
+                                    <div style={{ fontSize: 24, padding: 16, letterSpacing: 2 }} >Skill Set</div>
+                                    <MultiSelect
+                                        theme={
+                                            {
+                                                "hover": "#f1f3f5",
+                                                "height": "58px"
                                             }
-                                        }}> */}
-                                            <i class="fas fa-search"></i>
-                                        {/* </NavLink> */}
-                                    </div>
-                                </div>
+                                        }
+                                        options={this.state.options}
+                                        value={this.state.selected}
+                                        onChange={this.selectedBadgeClicked}
+                                        labelledBy={"Select"}
+                                    />
+                                </React.Fragment>
+                            )}
+                        <div style={{ display: 'flex', marginTop: 20 }} >
+                            <div style={{ margin: 'auto' }} data-animation="animated fadeInUp" class="btn_hover slider_btn">
+                                <a href="#">Search</a>
                             </div>
+                        </div>
+                        <div class="row">
                         </div>
                     </div>
                 </div>
@@ -681,7 +723,7 @@ class Home extends Component {
                             <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12">
                                 <div class="jb_heading_wraper">
 
-                                    <h3>Control everything from your business
+                                    <h3>We Are Good In
             </h3>
 
                                     <p>Your next level Product developemnt company assets</p>
@@ -707,53 +749,6 @@ class Home extends Component {
                                 <div class="services_content jb_cover">
                                     <img src="images/c3.png" alt="img" />
                                     <h3><a href="#">flexible invoicing</a></h3>
-                                    <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                                <div class="services_content jb_cover">
-                                    <img src="images/c4.png" alt="img" />
-                                    <h3><a href="#">Compliance Reporting</a></h3>
-                                    <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                                <div class="services_content jb_cover">
-                                    <img src="images/c5.png" alt="img" />
-                                    <h3><a href="#">job schedule</a></h3>
-                                    <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                                <div class="services_content jb_cover">
-                                    <img src="images/c6.png" alt="img" />
-                                    <h3><a href="#">safety checklists</a></h3>
-                                    <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                                <div class="services_content jb_cover">
-                                    <img src="images/c7.png" alt="img" />
-                                    <h3><a href="#">assest managment</a></h3>
-                                    <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                                <div class="services_content jb_cover">
-                                    <img src="images/c8.png" alt="img" />
-                                    <h3><a href="#">job notifications</a></h3>
-                                    <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                                <div class="services_content jb_cover">
-                                    <img src="images/c9.png" alt="img" />
-                                    <h3><a href="#">customer portal</a></h3>
                                     <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
 
                                 </div>
@@ -788,133 +783,6 @@ class Home extends Component {
                                         <a href="#" class="ss_appstore"><span><i class="flaticon-apple"></i></span> App Store</a>
 
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="client_wrapper_top jb_cover">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12">
-                                <div class="jb_heading_wraper">
-
-                                    <h3>our happy clients
-            </h3>
-
-                                    <p>Your next level Product developemnt company assets</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="client_wrapper jb_cover">
-                                    <div class="owl-carousel owl-theme">
-                                        <div class="item">
-                                            <div class="row">
-                                                <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="client_wrapper_cntnt jb_cover">
-                                                        <div class="client_shap1 bubble-5">
-                                                            <img src="images/bubble.png" class="img-responsive" alt="img" />
-                                                        </div>
-                                                        <div class="client_shap2 bubble-7">
-                                                            <img src="images/bubble.png" class="img-responsive" alt="img" />
-                                                        </div>
-                                                        <img src="images/quote1.png" alt="img" />
-
-                                                        <h1><a href="#">Marita Irene</a> <span>(business)</span></h1>
-
-                                                        <p>Packages and web page editors now use Lorem Ipsum as their am efault model text yr,and a search.</p>
-                                                        <div class="client_shap3 bubble-6">
-                                                            <img src="images/bubble.png" class="img-responsive" alt="img" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="clinnt_slider_img jb_cover">
-                                                        <img src="images/vv.png" class="img-responsive" alt="img" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="item">
-                                            <div class="row">
-                                                <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="client_wrapper_cntnt jb_cover">
-                                                        <div class="client_shap1 bubble-8">
-                                                            <img src="images/bubble.png" class="img-responsive" alt="img" />
-                                                        </div>
-                                                        <div class="client_shap2 bubble-9">
-                                                            <img src="images/bubble.png" class="img-responsive" alt="img" />
-                                                        </div>
-                                                        <img src="images/quote1.png" alt="img" />
-
-                                                        <h1><a href="#">Marita Irene</a> <span>(business)</span></h1>
-
-                                                        <p>Packages and web page editors now use Lorem Ipsum as their am efault model text yr,and a search.</p>
-                                                        <div class="client_shap3 bubble-6">
-                                                            <img src="images/bubble.png" class="img-responsive" alt="img" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="clinnt_slider_img jb_cover">
-                                                        <img src="images/vv.png" class="img-responsive" alt="img" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider_small3_shape shapenew">
-                        <img src="images/shape4.png" className="img-responsive" alt="img" />
-                    </div>
-                </div>
-              
-                <div class="popular_wrapper jb_cover">
-                  
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12">
-                                <div class="jb_heading_wraper">
-
-                                    <h3>We are Popular Everywhere
-            </h3>
-
-                                    <p>Your next level Product developemnt company assets</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="jp_register_section_main_wrapper jb_cover">
-                                    <div class="jp_regis_left_side_box_wrapper">
-                                        <div class="jp_regis_left_side_box">
-                                            <i class="flaticon-laptop"></i>
-                                            <h4>I’m an employer</h4>
-                                            <p>Signed in companies are able to post new
-                                                <br /> job offers, searching for candidate...</p>
-                                            <ul>
-                                                <li><a href="#" class="price_btn regis_btn"> register as company</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="jp_regis_right_side_box_wrapper">
-
-                                        <div class="jp_regis_right_side_box">
-                                            <i class="flaticon-doctor"></i>
-                                            <h4>I’m an candidate</h4>
-                                            <p>Signed in companies are able to post new
-                                                <br /> job offers, searching for candidate...</p>
-                                            <ul>
-                                                <li><a href="#" class="price_btn regis_btn">register as candidate</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="jp_regis_center_tag_wrapper">
-                                            <p>OR</p>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
@@ -1009,169 +877,7 @@ class Home extends Component {
                         <img src="images/line3.png" class="img-responsive" alt="img" />
                     </div>
                 </div>
-                <div class="news_letter_wrapper shaa jb_cover">
-                    <div class="sha1 bubble-180">
-                        <img src="images/bubble2.png" class="img-responsive " alt="img" />
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="job_newsletter_wrapper jb_cover">
-                                    <div class="jb_newslwtteter_left">
-                                        <h2> Looking For A Job</h2>
-                                        <p>Your next level Product developemnt company assetsYour next level Product </p>
-                                    </div>
-                                    <div class="jb_newslwtteter_button">
-                                        <div class="btn_hover slider_btn jobs_btn_3">
-                                            <a href="#">submit</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sha2 bubble-185">
-                        <img src="images/bubble2.png" class="img-responsive " alt="img" />
-                    </div>
-                </div>
-                <div class="footer index2_footer_wrapper footer_index3 shaa jb_cover">
-                    <div class="ft_shape bubble-18">
-                        <img src="images/bubble2.png" class="img-responsive " alt="img" />
-                    </div>
-
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-3 col-sm-6 col-12">
-                                <div class="footerNav jb_cover">
-                                    <a href="#"><img src="images/logo5.png" alt="img" /></a>
-                                    <ul class="footer_first_contact">
-                                        <li><i class="flaticon-location-pointer"></i>
-                                            <p>123 City Avenue, Floor 10,
-                                                <br /> malbourne, Australia.
-                                            </p>
-                                        </li>
-                                        <li><i class="flaticon-telephone"></i>
-                                            <p>1 -234 -456 -7890
-                                                <br /> 1 -234 -456 -7890</p>
-                                        </li>
-                                        <li><i class="flaticon-envelope"></i><a href="#">info@Jbdesks.com </a>
-                                            <br />
-                                            <a href="#">support@Jbdesks.com</a>
-                                        </li>
-
-                                    </ul>
-
-                                    <ul class="icon_list_news index2_icon_list jb_cover">
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li>
-                                            <a href="#"><i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 col-12">
-                                <div class="footerNav jb_cover footer_border_displ">
-                                    <h5>features</h5>
-                                    <ul class="nav-widget">
-                                        <li><a href="#"><i class="fa fa-square"></i>Job Management & Billing
-            </a></li>
-
-                                        <li><a href="#"><i class="fa fa-square"></i>Time & Materials Tracking
-            </a></li>
-
-                                        <li><a href="#"><i class="fa fa-square"></i>Standards Compliance
-            </a></li>
-
-                                        <li><a href="#"><i class="fa fa-square"></i>Real Time GPS Tracking
-            </a></li>
-
-                                        <li><a href="#"><i class="fa fa-square"></i>Client Portal
-            </a></li>
-
-                                        <li><a href="#"><i class="fa fa-square"></i> Powerful Workflow</a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 col-12">
-                                <div class="footerNav jb_cover footer_border_displ">
-                                    <h5>browse</h5>
-                                    <ul class="nav-widget">
-
-                                        <li><a href="#"><i class="fa fa-square"></i>Freelancers by Category</a></li>
-
-                                        <li><a href="#"><i class="fa fa-square"></i> Freelancers in USA </a></li>
-
-                                        <li><a href="#"><i class="fa fa-square"></i> Freelancers in UK</a></li>
-
-                                        <li><a href="#"><i class="fa fa-square"></i> Freelancers in Canada</a></li>
-                                        <li><a href="#"><i class="fa fa-square"></i> Freelancers in india</a></li>
-                                        <li><a href="#"><i class="fa fa-square"></i> find jobs</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 col-12">
-                                <div class="footerNav jb_cover footer_border_displ">
-                                    <h5>app & integration</h5>
-                                    <ul class="nav-widget">
-                                        <li>
-                                            <a href="#"><img src="images/ft1.png" alt="img" />Xero
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="#"><img src="images/ft2.png" alt="img" />Reckon
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="#"><img src="images/ft3.png" alt="img" />Flexidocs
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="images/ft4.png" alt="img" />Microsoft Exchange</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="images/ft5.png" alt="img" /> Mailchimp
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="images/ft6.png" alt="img" /> MYOB
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="copyright_left"><i class="fa fa-copyright"></i> 2019 <a href="#">  JB desks.  </a> All Rights Reserved.
-                            </div>
-
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="waveWrapper waveAnimation">
-                        <div class="waveWrapperInner bgTop gradient-color">
-                            <div class="wave waveTop wavetop_1 wavetop_3"></div>
-                        </div>
-                        <div class="waveWrapperInner bgMiddle">
-                            <div class="wave waveMiddle"></div>
-                        </div>
-                        <div class="waveWrapperInner bgBottom">
-                            <div class="wave waveBottom wavebottom_1 wavebottom_3"></div>
-                        </div>
-                    </div>
-                    <div class="ft_shape2 bubble-190">
-                        <img src="images/bubble2.png" class="img-responsive " alt="img" />
-                    </div>
-                    <div class="ft_shape1 bubble-19">
-                        <img src="images/bubble2.png" class="img-responsive " alt="img" />
-                    </div>
-                </div>
-                <Chatbot/>
+                <Chatbot />
                 <Footer />
             </React.Fragment>
         );
