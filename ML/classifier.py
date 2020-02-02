@@ -11,7 +11,7 @@ nlp = en_core_web_sm.load()
 
 # Function to read resumes from the folder one by one
 # enter your path here where you saved the resumes
-mypath = '.\\Resumes'
+mypath = 'D:\\Studies\\Hackathons\\Jobiffy\\ML\\Resumes'
 onlyfiles = [os.path.join(mypath, f) for f in os.listdir(
     mypath) if os.path.isfile(os.path.join(mypath, f))]
 print(onlyfiles)
@@ -20,6 +20,8 @@ print(onlyfiles)
 class Classifier:
 
     def __init__(self):
+        self.keyword_dict = pd.read_csv(
+            'D:\\Studies\\Hackathons\\Jobiffy\\ML\\template_new.csv')
         self.final_database = pd.DataFrame()
         i = 0
         while i < len(onlyfiles):
@@ -65,38 +67,39 @@ class Classifier:
         text = text.replace("\\n", "")
         text = text.lower()
         # below is the csv where we have all the keywords, you can customize your own
-        keyword_dict = pd.read_csv('./template_new.csv')
         stats_words = [nlp(text)
-                       for text in keyword_dict['statistics'].dropna(axis=0)]
-        NLP_words = [nlp(text) for text in keyword_dict['nlp'].dropna(axis=0)]
+                       for text in self.keyword_dict['statistics'].dropna(axis=0)]
+        NLP_words = [nlp(text)
+                     for text in self.keyword_dict['nlp'].dropna(axis=0)]
         ML_words = [nlp(text)
-                    for text in keyword_dict['machinelearning'].dropna(axis=0)]
+                    for text in self.keyword_dict['machinelearning'].dropna(axis=0)]
         DL_words = [nlp(text)
-                    for text in keyword_dict['deeplearning'].dropna(axis=0)]
-        R_words = [nlp(text) for text in keyword_dict['r'].dropna(axis=0)]
+                    for text in self.keyword_dict['deeplearning'].dropna(axis=0)]
+        R_words = [nlp(text) for text in self.keyword_dict['r'].dropna(axis=0)]
         python_words = [nlp(text)
-                        for text in keyword_dict['python'].dropna(axis=0)]
+                        for text in self.keyword_dict['python'].dropna(axis=0)]
         Java_words = [nlp(text)
-                      for text in keyword_dict['java'].dropna(axis=0)]
+                      for text in self.keyword_dict['java'].dropna(axis=0)]
         Game_words = [nlp(text)
-                      for text in keyword_dict['game'].dropna(axis=0)]
-        AR_words = [nlp(text) for text in keyword_dict['ar'].dropna(axis=0)]
+                      for text in self.keyword_dict['game'].dropna(axis=0)]
+        AR_words = [nlp(text)
+                    for text in self.keyword_dict['ar'].dropna(axis=0)]
         Data_Engineer_words = [
-            nlp(text) for text in keyword_dict['dataengineer'].dropna(axis=0)]
-        Blockchain_words = [nlp(text)
-                            for text in keyword_dict['blockchain'].dropna(axis=0)]
-        Frontend_words = [nlp(text)
-                          for text in keyword_dict['frontend'].dropna(axis=0)]
+            nlp(text) for text in self.keyword_dict['dataengineer'].dropna(axis=0)]
+        Blockchain_words = [
+            nlp(text) for text in self.keyword_dict['blockchain'].dropna(axis=0)]
+        Frontend_words = [
+            nlp(text) for text in self.keyword_dict['frontend'].dropna(axis=0)]
         Backend_words = [nlp(text)
-                         for text in keyword_dict['backend'].dropna(axis=0)]
-        Database_words = [nlp(text)
-                          for text in keyword_dict['database'].dropna(axis=0)]
+                         for text in self.keyword_dict['backend'].dropna(axis=0)]
+        Database_words = [
+            nlp(text) for text in self.keyword_dict['database'].dropna(axis=0)]
         Mobile_words = [nlp(text)
-                        for text in keyword_dict['mobile'].dropna(axis=0)]
+                        for text in self.keyword_dict['mobile'].dropna(axis=0)]
         Prog_words = [nlp(text)
-                      for text in keyword_dict['programmer'].dropna(axis=0)]
-        Designer_words = [nlp(text)
-                          for text in keyword_dict['designer'].dropna(axis=0)]
+                      for text in self.keyword_dict['programmer'].dropna(axis=0)]
+        Designer_words = [
+            nlp(text) for text in self.keyword_dict['designer'].dropna(axis=0)]
         FullStack_words = Frontend_words+Backend_words+Database_words
 
         matcher = PhraseMatcher(nlp.vocab)
@@ -160,15 +163,43 @@ class Classifier:
         rank = {}
         print(self.pd_csv['Candidate Name'].values)
         print(self.pd_csv.loc[self.pd_csv['Candidate Name'] == 'rohan murphy'])
-
+        recommendedSkills = []
         for name in self.pd_csv['Candidate Name'].values:
             val = 0.0
             x = self.pd_csv.loc[self.pd_csv['Candidate Name'] == name]
             for elm in query:
+                print(recommendedSkills)
+                print(self.keyword_dict[elm].tolist())
+                recommendedSkills += self.keyword_dict[elm].tolist()
                 if name in rank.keys():
                     val += float(x[elm])/float(self.idf_dict[elm])
                 else:
                     val = float(x[elm])/float(self.idf_dict[elm])
+            rank[name] = val
+            print(name)
+            print(val)
+        # sorting the results in descending order
+        rank = sorted(rank.items(), key=lambda kv: (
+            kv[1], kv[0]), reverse=True)
+        ranked = [x[0] for x in rank]
+        print(rank)
+        print(recommendedSkills)
+        xyz = list(set(recommendedSkills))
+        rS = [x for x in xyz if str(x) != 'nan']
+        return {"ranked": ranked, "recommendedSkills": rS}
+
+    def recommend_search(self, cookie):
+        print(cookie)
+        cokie = eval(cookie)
+        query = cokie.keys()
+        rank = {}
+        for name in self.pd_csv['Candidate Name'].values:
+            val = 0.0
+            x = self.pd_csv.loc[self.pd_csv['Candidate Name'] == name]
+            for elm in query:
+                print(cokie[elm]*float(x[elm])/float(self.idf_dict[elm]))
+                val = val+cokie[elm]*float(x[elm])/float(self.idf_dict[elm])
+                print(val)
             rank[name] = val
             print(name)
             print(val)
