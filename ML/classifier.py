@@ -150,10 +150,8 @@ class Classifier:
                 print(recommendedSkills)
                 print(self.keyword_dict[elm].tolist())
                 recommendedSkills+=self.keyword_dict[elm].tolist()
-                if name in rank.keys():
-                    val+=float(x[elm])/float(self.idf_dict[elm])
-                else:
-                    val=float(x[elm])/float(self.idf_dict[elm])
+                val=val+float(x[elm])/float(self.idf_dict[elm])
+                print(val)
             rank[name]=val
             print(name)
             print(val)
@@ -187,3 +185,4 @@ class Classifier:
         return ranked
 
 call=Classifier()
+call.skills_search(['java','python'])

@@ -38,7 +38,10 @@ job_types = {
 
 class signup(Resource):
 
-    def get(self, email, fname, password):
+    def get(self):
+        email=request.args.get('email')
+        fname=request.args.get('fname')
+        password=request.args.get('pass')
         try:
             password = sha256_crypt.encrypt(password)
             conn = sqlite3.connect('users.db')
@@ -55,7 +58,9 @@ class signup(Resource):
 
 class login(Resource):
     res = {}
-    def get(self, email, password):
+    def get(self):
+        email=request.args.get('email')
+        password=request.args.get('pass')
         res = {}
         pwd=""
         try:
@@ -75,8 +80,11 @@ class login(Resource):
 
 
 class search(Resource):
-    def get(self, param, typeOfParam):
+    def get(self):
+        param=request.args.get('param')
+        typeOfParam=request.args.get('typeOfParam')
         print(param)
+        print(type(param))
         if typeOfParam=='0':
             print('inside 0--------------------->')
             passOn=job_types[param]
@@ -89,7 +97,9 @@ class search(Resource):
                     for p in param.split(','):
                         if(df.iloc[i,j] == p):
                             newSet.add(df.columns[j])
+            print(newSet)
             passOn=list(newSet)
+            print('below one is list passOn')
             print(passOn)
             ranks=c.call.skills_search(passOn)
         return {"ranks":ranks,"cookie":passOn}
@@ -101,9 +111,9 @@ class recommend(Resource):
         return ranks
 
 
-api.add_resource(
-    signup, '/signup=<string:email>&&<string:fname>&&<string:password>')
-api.add_resource(login, '/login=<string:email>&&<string:password>')
-api.add_resource(search, '/search=<string:param>&&<string:typeOfParam>')
-api.add_resource(recommend, '/recommend=<string:cookie>')
+api.add_resource(signup, '/signup')
+api.add_resource(login, '/login')
+api.add_resource(search, '/search')
+api.add_resource(recommend, '/recommend')
 app.run(host='0.0.0.0',debug=False)
+
