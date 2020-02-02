@@ -46,7 +46,7 @@ class JobCategory extends Component {
                             <input value='government-jobs' onChange={this.change} type="checkbox" id="c77" name="cb"/>
                             <label for="c77">government Jobs <span> (1284)</span> </label>
                         </p>
-                        <div class="seeMore"><a href="#">view all categories</a></div>
+                        {/* <div class="seeMore"><a href="#">view all categories</a></div> */}
                     </div>
 
                 </div>

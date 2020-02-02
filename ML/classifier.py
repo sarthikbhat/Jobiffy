@@ -10,7 +10,7 @@ nlp = en_core_web_sm.load()
 from spacy.matcher import PhraseMatcher
 
 #Function to read resumes from the folder one by one
-mypath='E:/SAGAR/BE/Hackit/Jobiffy/ML/Resumes' #enter your path here where you saved the resumes
+mypath='E:\SAGAR\BE\Hackit\Jobiffy\ML\Resumes' #enter your path here where you saved the resumes
 onlyfiles = [os.path.join(mypath, f) for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath, f))]
 print(onlyfiles)
 

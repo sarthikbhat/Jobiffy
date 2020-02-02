@@ -7,7 +7,7 @@ class JobLocation extends Component {
             <React.Fragment>
                 <div class="job_filter_category_sidebar jb_cover">
                     <div class="job_filter_sidebar_heading jb_cover">
-                        <h1>jobs by  location</h1>
+                        <h1>Location</h1>
                     </div>
 
                     <div class="category_jobbox jb_cover">
@@ -47,7 +47,7 @@ class JobLocation extends Component {
                             <input type="checkbox" id="c071" name="cb"/>
                             <label for="c071">Job in banglore <span> (124)</span> </label>
                         </p>
-                        <div class="seeMore"><a href="#">view all categories</a></div>
+                        {/* <div class="seeMore"><a href="#">view all categories</a></div> */}
                     </div>
                 </div>
             </React.Fragment>

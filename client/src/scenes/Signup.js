@@ -40,7 +40,7 @@ class Signup extends Component {
     render() {
         return (
             <React.Fragment>
-                <Header />
+                {/* <Header /> */}
                 <div class="page_title_section">
 
                     <div class="page_header">

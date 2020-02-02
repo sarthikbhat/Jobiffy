@@ -11,6 +11,7 @@ class Home extends Component {
     state = {
         category: 'Category',
         jobTitle: true,
+        recomended:[],
         jobTitles: [
             { label: "Database Manager", value: "Database Manager" },
             { label: "Graphic Designer", value: "Graphic Designer" },
@@ -72,6 +73,24 @@ class Home extends Component {
         Axios.get(`http://localhost:5000/search=${this.generateString(this.state.jobTitle?this.state.selectedJT:this.state.selected)}&&${this.state.jobTitle?0:1}`)
         .then(res=>{
             this.setState({data: res.data})
+            localStorage.setItem('cache',`${res.data.ranks.ranked}`)
+            var arr=res.data.cookie
+            var ls=localStorage.getItem('cookie')
+            if(!ls){
+                localStorage.setItem('cookie','{"java":1}')
+            }
+            else{
+                var obj=JSON.parse(localStorage.getItem('cookie'))
+                arr.forEach(i=>{
+                    if(i in obj){
+                        obj={...obj,[i]:obj[i]+1}
+                    }
+                    else{
+                        obj={...obj,[i]: 1}
+                    }
+                })
+                localStorage.setItem('cookie',JSON.stringify(obj))
+            }
             this.props.history.push({
                 pathname: '/job-list',
                 sProps: {
@@ -101,12 +120,53 @@ class Home extends Component {
         Axios.get(`http://localhost:5000/recommend=${localStorage.getItem('cookie')?localStorage.getItem('cookie'):'{"java": 1}'}`)
         .then(res=>{
             console.log(res.data)
-            localStorage.setItem('cookie',JSON.stringify(res.data))
+            this.setState({recomended: res.data})
+            // localStorage.setItem('cookie',JSON.stringify(res.data))
         }
         )
     }
     render() {
         console.log(this.generateString(this.state.selectedJT))
+        const renderRec=this.state.recomended.slice(0,6).map(i=>{
+            return(
+                <div class="job_listing_left_fullwidth job_listing_grid_wrapper index2_listing_jobs index3_listing_jobs jb_cover">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+                            <div class="jp_job_post_side_img">
+                                <img src="images/lt5.png" alt="post_img" />
+
+                            </div>
+                            <div class="jp_job_post_right_cont">
+                                <h4><a href="#"> {i} </a></h4>
+                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            )
+        })
+        const renderRecent=localStorage.getItem('cache').split(',').slice(0,6).map(i=>{
+            return(
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                    <div class="jp_recent_resume_box_wrapper jb_cover">
+                        <div class="jp_recent_resume_img_wrapper">
+                            <img src="images/cmnt4.png" alt="resume_img" />
+                        </div>
+                        <div class="jp_recent_resume_cont_wrapper">
+                            <h3> <a href="#"> {i} </a></h3>
+                            <p><i class="far fa-folder-open"></i>UI Designer</p>
+                        </div>
+                        <div class="jp_recent_resume_btn_wrapper">
+                            <ul>
+                                <li onClick={()=>window.open(`http://localhost:5000/Resumes/${i}.pdf`)} ><a>View Profile</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            )
+        })
         const selectedOptionsStyles = {
             color: "#3c763d",
             backgroundColor: "#dff0d8"
@@ -145,8 +205,7 @@ class Home extends Component {
                                                     <div class="slider_shape_smt1 bubble-2">
                                                         <img src="images/bubble.png" class="img-responsive " alt="img" />
                                                     </div>
-                                                    <h2 data-animation="animated fadeInUp">We Offer <span> 25,000 </span>Job
-            Vacancies Right Now!.</h2>
+                                                    <h2 data-animation="animated fadeInUp">We Offer <span> 50+ </span>Highly qualified candidates Right Now!.</h2>
 
                                                     <p data-animation="animated fadeInUp">The most complete field service software for IT & Mobile Support, Fire Services, Electrical, Maintenance, HVAC & Security Industries</p>
                                                     <div data-animation="animated fadeInUp" class="btn_hover slider_btn">
@@ -366,173 +425,16 @@ class Home extends Component {
                             <div class="col-lg-10 offset-lg-1 col-md-12 col-sm-12">
                                 <div class="jb_heading_wraper">
 
-                                    <h3>Our Best Jobs for You</h3>
+                                    <h3>Recomended</h3>
 
-                                    <p>Your next level Product developemnt company assets</p>
+                                    <p>These are some of the recomendations based on your interests</p>
                                 </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-
-                                <div class="latest_job_tabs index2_tab_wrapper index3_tab_wrapper jb_cover">
-                                    <ul class="nav nav-tabs">
-                                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home"> latest job</a>
-                                        </li>
-                                        <li class="nav-item"> <a class="nav-link " data-toggle="tab" href="#menu1">popular job</a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
                             </div>
                             <div class="col-xl-12 col-lg-12 col-md-12">
                                 <div class="tab-content">
                                     <div id="home" class="tab-pane active">
                                         <div class="row">
-                                            <div class="col-lg-6 col-md-12 col-sm-12">
-
-                                                <div class="job_listing_left_fullwidth job_listing_grid_wrapper index2_listing_jobs index3_listing_jobs jb_cover">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                                            <div class="jp_job_post_side_img">
-                                                                <img src="images/lt5.png" alt="post_img" />
-
-                                                            </div>
-                                                            <div class="jp_job_post_right_cont">
-                                                                <h4><a href="#">web  Designer </a></h4>
-
-                                                                <ul>
-                                                                    <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-                                                                    <li><i class="flaticon-location-pointer"></i>&nbsp; RG40, Wokingham</li>
-                                                                </ul>
-                                                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-12 col-sm-12">
-
-                                                <div class="job_listing_left_fullwidth job_listing_grid_wrapper index2_listing_jobs index3_listing_jobs jb_cover">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                                            <div class="jp_job_post_side_img">
-                                                                <img src="images/lt2.png" alt="post_img" />
-
-                                                            </div>
-                                                            <div class="jp_job_post_right_cont">
-                                                                <h4><a href="#">web  Designer </a></h4>
-
-                                                                <ul>
-                                                                    <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-                                                                    <li><i class="flaticon-location-pointer"></i>&nbsp; RG40, Wokingham</li>
-                                                                </ul>
-                                                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-12 col-sm-12">
-
-                                                <div class="job_listing_left_fullwidth job_listing_grid_wrapper index2_listing_jobs index3_listing_jobs jb_cover">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                                            <div class="jp_job_post_side_img">
-                                                                <img src="images/lt3.png" alt="post_img" />
-
-                                                            </div>
-                                                            <div class="jp_job_post_right_cont">
-                                                                <h4><a href="#">php  developer </a></h4>
-
-                                                                <ul>
-                                                                    <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-                                                                    <li><i class="flaticon-location-pointer"></i>&nbsp; RG40, Wokingham</li>
-                                                                </ul>
-                                                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-12 col-sm-12">
-
-                                                <div class="job_listing_left_fullwidth job_listing_grid_wrapper index2_listing_jobs index3_listing_jobs jb_cover">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                                            <div class="jp_job_post_side_img">
-                                                                <img src="images/lt4.png" alt="post_img" />
-
-                                                            </div>
-                                                            <div class="jp_job_post_right_cont">
-                                                                <h4><a href="#">graphic  Designer </a></h4>
-
-                                                                <ul>
-                                                                    <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-                                                                    <li><i class="flaticon-location-pointer"></i>&nbsp; RG40, Wokingham</li>
-                                                                </ul>
-                                                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-12 col-sm-12">
-
-                                                <div class="job_listing_left_fullwidth job_listing_grid_wrapper index2_listing_jobs index3_listing_jobs jb_cover">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                                            <div class="jp_job_post_side_img">
-                                                                <img src="images/lt5.png" alt="post_img" />
-
-                                                            </div>
-                                                            <div class="jp_job_post_right_cont">
-                                                                <h4><a href="#">software eng. </a></h4>
-
-                                                                <ul>
-                                                                    <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-                                                                    <li><i class="flaticon-location-pointer"></i>&nbsp; RG40, Wokingham</li>
-                                                                </ul>
-                                                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-12 col-sm-12">
-
-                                                <div class="job_listing_left_fullwidth job_listing_grid_wrapper index2_listing_jobs index3_listing_jobs jb_cover">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                                            <div class="jp_job_post_side_img">
-                                                                <img src="images/lt3.png" alt="post_img" />
-
-                                                            </div>
-                                                            <div class="jp_job_post_right_cont">
-                                                                <h4><a href="#">UI/UX  Designer </a></h4>
-
-                                                                <ul>
-                                                                    <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-                                                                    <li><i class="flaticon-location-pointer"></i>&nbsp; RG40, Wokingham</li>
-                                                                </ul>
-                                                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
+                                            {renderRec}
                                         </div>
                                     </div>
                                     <div id="menu1" class="tab-pane fade">
@@ -713,24 +615,24 @@ class Home extends Component {
                                     <div class="counter_width">
                                         <div class="counter_cntnt_box">
 
-                                            <div class="count-description"><span class="timer">2500</span>
-                                                <p class="con2">happy customers </p>
+                                            <div class="count-description"><span class="timer">56</span>
+                                                <p class="con2">Candidate profiles</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="counter_width">
                                         <div class="counter_cntnt_box">
 
-                                            <div class="count-description"> <span class="timer">9425</span>
-                                                <p class="con2">ticket solved</p>
+                                            <div class="count-description"> <span class="timer">15</span><span>+</span>
+                                                <p class="con2">Job Titles</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="counter_width">
                                         <div class="counter_cntnt_box">
 
-                                            <div class="count-description"> <span class="timer">9</span><span>+</span>
-                                                <p class="con2">average rating</p>
+                                            <div class="count-description"> <span class="timer">30</span><span>+</span>
+                                                <p class="con2">Skills</p>
                                             </div>
                                         </div>
                                     </div>
@@ -770,8 +672,8 @@ class Home extends Component {
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="services_content jb_cover">
                                     <img src="images/c2.png" alt="img" />
-                                    <h3><a href="#">eassy pay money</a></h3>
-                                    <p>Create jobs, allocate to technicians, track time & materials to determine job profitability </p>
+                                    <h3><a href="#">easy to access</a></h3>
+                                    <p>ML based resume segredation for quick and easy access</p>
 
                                 </div>
                             </div>
@@ -805,7 +707,7 @@ class Home extends Component {
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <div class="download_app_store jb_cover">
                                     <h1>Download</h1>
-                                    <h2>Job Portal App Now!</h2>
+                                    <h2>Jobiffy App Now!</h2>
                                     <p>All it takes is 30 seconds to Download. Your Mobile App for Job
                                         <br /> Fast, Simple & Delightful.</p>
                                     <div class="app_btn playstore_2 jb_cover">
@@ -833,73 +735,10 @@ class Home extends Component {
                                     <p>Your next level Product developemnt company assets</p>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                                <div class="jp_recent_resume_box_wrapper jb_cover">
-                                    <div class="jp_recent_resume_img_wrapper">
-                                        <img src="images/cmnt4.jpg" alt="resume_img" />
-                                    </div>
-                                    <div class="jp_recent_resume_cont_wrapper">
-                                        <h3> <a href="#">Akshay Handge</a></h3>
-                                        <p><i class="far fa-folder-open"></i>UI Designer</p>
-                                    </div>
-                                    <div class="jp_recent_resume_btn_wrapper">
-                                        <ul>
-                                            <li><a href="#">View Profile</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <div class="jp_recent_resume_box_wrapper jb_cover">
-                                    <div class="jp_recent_resume_img_wrapper">
-                                        <img src="images/cmnt1.jpg" alt="resume_img" />
-                                    </div>
-                                    <div class="jp_recent_resume_cont_wrapper">
-                                        <h3><a href="#">aditi S.</a></h3>
-                                        <p><i class="far fa-folder-open"></i> I Designer</p>
-                                    </div>
-                                    <div class="jp_recent_resume_btn_wrapper">
-                                        <ul>
-                                            <li><a href="#">View Profile</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <div class="jp_recent_resume_box_wrapper jb_cover">
-                                    <div class="jp_recent_resume_img_wrapper">
-                                        <img src="images/cmnt2.jpg" alt="resume_img" />
-                                    </div>
-                                    <div class="jp_recent_resume_cont_wrapper">
-                                        <h3><a href="#">Merry Foster</a></h3>
-                                        <p><i class="far fa-folder-open"></i>UI Designer</p>
-                                    </div>
-                                    <div class="jp_recent_resume_btn_wrapper">
-                                        <ul>
-                                            <li><a href="#">View Profile</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <div class="jp_recent_resume_box_wrapper jb_cover">
-                                    <div class="jp_recent_resume_img_wrapper">
-                                        <img src="images/cmnt3.jpg" alt="resume_img" />
-                                    </div>
-                                    <div class="jp_recent_resume_cont_wrapper">
-                                        <h3> <a href="#">joahn due</a></h3>
-                                        <p><i class="far fa-folder-open"></i>UI Designer</p>
-                                    </div>
-                                    <div class="jp_recent_resume_btn_wrapper">
-                                        <ul>
-                                            <li><a href="#">View Profile</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="btn_hover slider_btn jobs_btn_3 vb jb_cover">
+                            {renderRecent}
+                            {/* <div class="btn_hover slider_btn jobs_btn_3 vb jb_cover">
                                 <a href="#">view all</a>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div class="counter_jbbb2 jb_cover">

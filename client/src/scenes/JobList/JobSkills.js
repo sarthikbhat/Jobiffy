@@ -7,7 +7,7 @@ class JobSkills extends Component {
             <React.Fragment>
                 <div class="job_filter_category_sidebar jb_cover">
                     <div class="job_filter_sidebar_heading jb_cover">
-                        <h1>your skill's</h1>
+                        <h1>Skills</h1>
                     </div>
 
                     <div class="category_jobbox jb_cover">
@@ -48,7 +48,7 @@ class JobSkills extends Component {
                             <label for="c171">social media<span> (124)</span> </label>
                         </p>
 
-                        <div class="seeMore"><a href="#">view all categories</a></div>
+                        {/* <div class="seeMore"><a href="#">view all categories</a></div> */}
                     </div>
                 </div>
             </React.Fragment>

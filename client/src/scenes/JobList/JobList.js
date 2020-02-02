@@ -12,14 +12,17 @@ import Axios from 'axios';
 class JobList extends Component {
     state = { 
         data: {
-            ranked: [1],
-            recommendedSkills: [1]
-        }
+            ranks:{
+                ranked: [1],
+                recommendedSkills: [1]
+            }
+        },
+        address:['Mumbai, Maharashtra, 400092','Thane, Maharashtra, 400098','Nashik, Maharashtra, 403496','Mumbai, Maharashtra, 400092','Mumbai, Maharashtra, 400105']
      }
     componentDidMount(){
         window.scrollTo(0, 0)
         window.addEventListener('load', this.handleLoad);
-        // console.log(this.props.location.sProps)
+        console.log(this.props.location.sProps.data)
         this.setState({data: this.props.location.sProps.data})
         setTimeout(()=>{
             if(document.getElementById('loader')){
@@ -43,18 +46,22 @@ class JobList extends Component {
         .then(res=>this.setState({data: res.data}))
     }
     render() {
+        var count=0
         console.log(this.state)
         console.log(this.props.location.sProps)
-        const renderCard=this.state.data.ranked.map(i=>{
+        const renderCard=this.state.data.ranks.ranked.map(i=>{
             return(
                 <Card
                 name={i}
+                address={this.state.address[count++]}
                 />
             )
         })
-        const renderPill=this.state.data.recommendedSkills.map(i=>{
+        const renderPill=this.state.data.ranks.recommendedSkills.map(i=>{
             return(
-                <button onClick={(i)=>this.handleSearch(i)} style={{color: '#fff', background: '#ff3366', margin: 10, padding: 10, borderRadius: 4, border: 'none'}} >{i}</button>
+                <button onClick={(i)=>this.handleSearch(i)} style={{minWidth: 105, color: '#fff', background: '#ff3366', margin: 10, padding: 10, borderRadius: 4, border: 'none'}} >
+                    <div>{i}</div>
+                </button>
             )
         })
         // const renderPill=['Python','Java','C#','ReactJS','AI/ML','Python','Java','C#','ReactJS','AI/ML'].map(i=>{
@@ -100,7 +107,7 @@ class JobList extends Component {
                                 <JobCategory />
                                 <JobLocation />
                                 <JobSkills />
-                                <JobSalary />
+                                {/* <JobSalary /> */}
                             </div>
                             <div class="col-lg-9 col-md-12 col-sm-12 col-12">
                                 <div class="job_listing_left_side jb_cover">
@@ -122,9 +129,6 @@ class JobList extends Component {
                                                 </li>
 
                                             </ul>
-                                        </div>
-                                        <div class="showpro">
-                                            <p>You're Watching 01 to 20</p>
                                         </div>
                                     </div>
                                     <div style={{display: 'flex', alignItems: 'center', gridTemplateColumns: '1fr 6fr', border: '1px solid #e2e2e2', marginTop: 120, padding: 30}} >
@@ -299,28 +303,7 @@ class JobList extends Component {
                                                 
                                             </div>
                                         </div>
-                                        <div class="blog_pagination_section jb_cover">
-                                            <ul>
-                                                <li>
-                                                    <a href="#" class="prev"> <i class="flaticon-left-arrow"></i> </a>
-                                                </li>
-                                                <li><a href="#">1</a>
-                                                </li>
-                                                <li class="third_pagger"><a href="#">2</a>
-                                                </li>
-                                                <li class="d-block d-sm-block d-md-block d-lg-block"><a href="#">3</a>
-                                                </li>
-                                                <li class="d-none d-sm-block d-md-block d-lg-block"><a href="#">...</a>
-                                                </li>
-                                                <li class="d-none d-sm-block d-md-block d-lg-block"><a href="#">6</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#" class="next"> <i class="flaticon-right-arrow"></i> </a>
-                                                </li>
-                                            </ul>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-12 col-sm-12 col-12 d-block d-sm-block d-md-block d-lg-none d-xl-none">

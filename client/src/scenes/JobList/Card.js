@@ -10,15 +10,15 @@ class Card extends Component {
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="jp_job_post_side_img">
-                                    <img src="images/lt1.png" alt="post_img" />
+                                    <img width='100%' src="images/lt1.png" alt="post_img" />
                                     <br/> <span>google</span>
                                 </div>
                                 <div class="jp_job_post_right_cont">
                                     <h4><a href="#"> {this.props.name} </a></h4>
 
                                     <ul>
-                                        <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-                                        <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
+                                        {/* <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li> */}
+                                        <li><i class="flaticon-location-pointer"></i>&nbsp; {this.props.address} </li>
                                     </ul>
                                 </div>
                             </div>
@@ -30,10 +30,9 @@ class Card extends Component {
                                                 <a href="#!"><i class="far fa-heart"></i></a>
                                             </div>
                                         </li>
-                                        <li><a href="job_single.html">Part Time</a></li>
                                         <li onClick={()=>{
                                             window.open(`http://localhost:5000/Resumes/${this.props.name}.pdf`)
-                                        }} > <a data-toggle="modal" data-target="#myModal01">apply</a></li>
+                                        }} > <a data-toggle="modal" data-target="#myModal01">View Resume</a></li>
                                     </ul>
                                 </div>
                                 <div class="modal fade apply_job_popup" id="1" role="dialog">
